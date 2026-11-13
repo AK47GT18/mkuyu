@@ -11,6 +11,25 @@ export const LODGE_FACTS = {
   coordinates: { lat: -13.7804, lng: 34.4587 },
 }
 
+export const ADMISSION_FEES = {
+  gateEntrance: {
+    title: 'Reserve Gate Entrance',
+    adult: 'MK 10,000',
+    children: 'MK 5,000',
+    adultNum: 10000,
+    childrenNum: 5000,
+    description: 'Day-visitor reserve pass covering grounds, swimming pool, kids adventure park, watchtower, and dining pavilion.',
+  },
+  gameDrive: {
+    title: 'Safari Game Drive',
+    adult: 'MK 40,000',
+    children: 'MK 20,000',
+    adultNum: 40000,
+    childrenNum: 20000,
+    description: 'Open 4x4 guided morning Buck Pursuit or golden-hour Dusk Expedition with certified FGASA trackers.',
+  },
+}
+
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'The Reserve', href: '/reserve' },

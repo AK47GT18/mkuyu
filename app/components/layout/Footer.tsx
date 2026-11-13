@@ -72,7 +72,7 @@ export default function Footer() {
                   <FaWhatsapp size={16} />
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://web.facebook.com/mkuyugameranch"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
@@ -81,7 +81,7 @@ export default function Footer() {
                   <FaFacebook size={16} />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/mkuyu_game_lodge"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -90,22 +90,13 @@ export default function Footer() {
                   <FaInstagram size={16} />
                 </a>
                 <a
-                  href="https://tripadvisor.com"
+                  href="https://www.google.com/maps/place/Mkuyu+Game+Lodge"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="TripAdvisor"
+                  aria-label="Google Reviews"
                   className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-forest-green hover:scale-105 transition-all"
                 >
                   <FaTripadvisor size={16} />
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-forest-green hover:scale-105 transition-all"
-                >
-                  <FaYoutube size={16} />
                 </a>
               </div>
             </div>

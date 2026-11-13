@@ -17,6 +17,7 @@ import {
   FiPhone,
 } from 'react-icons/fi'
 import HeroSlider from '@/app/components/home/HeroSlider'
+import ReviewsSection from '@/app/components/home/ReviewsSection'
 import PageShell from '@/app/components/layout/PageShell'
 import CtaSection from '@/app/components/ui/CtaSection'
 import AnimatedCounter from '@/app/components/ui/AnimatedCounter'
@@ -487,7 +488,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. REFINED REUSABLE BOTTOM CTA (Reduced height, image behind, no badge) */}
+      {/* 9. GUEST REVIEWS */}
+      <ReviewsSection />
+
+      {/* 10. REFINED REUSABLE BOTTOM CTA (Reduced height, image behind, no badge) */}
       <CtaSection />
     </PageShell>
   )

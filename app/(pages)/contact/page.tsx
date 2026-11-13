@@ -11,7 +11,7 @@ import {
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import PageShell from '@/app/components/layout/PageShell'
 import PageHero from '@/app/components/ui/PageHero'
-import { LODGE_FACTS } from '@/app/lib/content'
+import { LODGE_FACTS, ADMISSION_FEES } from '@/app/lib/content'
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
@@ -167,6 +167,36 @@ export default function ContactPage() {
                       </p>
                     </div>
                   </div>
+
+                  {/* Entrance Fees */}
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-light-sage flex-shrink-0 mt-0.5">
+                      <FiCheck size={18} />
+                    </div>
+                    <div className="w-full">
+                      <p className="text-[10px] font-extrabold text-light-sage uppercase tracking-wider mb-2">
+                        Entrance Fees (MWK)
+                      </p>
+                      <div className="rounded-xl overflow-hidden border border-white/15 text-[11px]">
+                        <div className="grid grid-cols-3 bg-white/5 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-white/50">
+                          <span></span>
+                          <span>Adult</span>
+                          <span>Child</span>
+                        </div>
+                        <div className="grid grid-cols-3 px-3 py-2.5 border-t border-white/10">
+                          <span className="font-bold text-white/85">Gate Entry</span>
+                          <span className="font-extrabold text-light-sage">MK 10,000</span>
+                          <span className="font-bold text-white/70">MK 5,000</span>
+                        </div>
+                        <div className="grid grid-cols-3 px-3 py-2.5 border-t border-white/10">
+                          <span className="font-bold text-white/85">Game Drive</span>
+                          <span className="font-extrabold text-light-sage">MK 40,000</span>
+                          <span className="font-bold text-white/70">MK 20,000</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
@@ -177,7 +207,7 @@ export default function ContactPage() {
                 </p>
                 <div className="flex gap-2.5">
                   <a
-                    href="https://facebook.com"
+                    href="https://web.facebook.com/mkuyugameranch"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-forest-green transition-colors"
@@ -186,7 +216,7 @@ export default function ContactPage() {
                     <FaFacebook size={16} />
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/mkuyu_game_lodge"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-forest-green transition-colors"
