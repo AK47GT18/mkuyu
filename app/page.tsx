@@ -65,27 +65,27 @@ export default function Home() {
       {/* 1. HERO SLIDER (Full-screen, left-aligned, single button, no badge) */}
       <HeroSlider />
 
-      {/* 2. RECOLORED & COMPRESSED STATS SECTION (ONE SINGLE ROW ON ALL SCREENS) */}
-      <section className="bg-white py-6 sm:py-12 border-b border-forest-green/10 relative z-20">
+      {/* 2. UNIFIED SINGLE-LINE STAT BAR (NOT INDEPENDENT CARDS) */}
+      <section className="bg-forest-light/60 py-6 sm:py-9 border-b border-forest-green/15 relative z-20">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-4 divide-x divide-forest-green/20">
             {statDetails.map((stat, idx) => (
               <div
                 key={idx}
-                className="p-2.5 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-forest-light border border-forest-green/15 hover:border-forest-green/40 hover:shadow-md transition-all group"
+                className="px-2 sm:px-6 lg:px-8 text-left flex flex-col justify-center"
               >
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="text-base sm:text-3xl lg:text-5xl font-extrabold text-[#14240E] tracking-tight group-hover:text-forest-green transition-colors">
+                <div className="flex items-baseline gap-1 sm:gap-1.5 mb-0.5">
+                  <span className="text-lg sm:text-3xl lg:text-5xl font-extrabold text-[#14240E] tracking-tight">
                     {stat.value}
                   </span>
                   <span className="text-[8px] sm:text-[10px] lg:text-xs uppercase font-extrabold text-forest-green tracking-wider">
                     {stat.unit}
                   </span>
                 </div>
-                <p className="text-[9px] sm:text-xs font-extrabold text-[#14240E] uppercase tracking-tight truncate mb-0.5">
+                <p className="text-[9px] sm:text-xs font-extrabold text-[#14240E] uppercase tracking-tight truncate">
                   {stat.label}
                 </p>
-                <p className="text-[10px] lg:text-[11px] text-[#14240E]/80 leading-relaxed font-normal hidden md:block">
+                <p className="text-[10px] lg:text-[11px] text-[#14240E]/75 leading-relaxed font-normal mt-0.5 hidden sm:block">
                   {stat.desc}
                 </p>
               </div>
