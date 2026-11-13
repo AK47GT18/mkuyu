@@ -35,11 +35,11 @@ const serviceIcons: Record<string, React.ReactNode> = {
 const serviceImages: Record<string, string> = {
   'game-drives': '/images/lodge-40.jpg',
   'bush-walks': '/images/lodge-42.jpg',
-  'watchtower': '/images/lodge-37.jpg',
+  'watchtower': '/images/tower-actual.jpg',
   'birdwatching': '/images/lodge-09.jpg',
-  'accommodation': '/images/lodge-14.jpg',
-  'dining': '/images/lodge-29.jpg',
-  'pool': '/images/lodge-18.jpg',
+  'accommodation': '/images/spherical-building.jpg',
+  'dining': '/images/bar-lounge.jpg',
+  'pool': '/images/pool-actual.jpg',
   'camping': '/images/lodge-61.jpg',
 }
 
@@ -55,7 +55,7 @@ const galleryTeaser = [
   { src: '/images/lodge-10.jpg', alt: 'Wildlife sighting on game drive', span: 'col-span-1' },
   { src: '/images/lodge-21.jpg', alt: 'Plains zebra grazing on the ranch', span: 'col-span-1' },
   { src: '/images/lodge-32.jpg', alt: 'Eco sanctuary interior living space', span: 'col-span-1 md:col-span-2' },
-  { src: '/images/lodge-18.jpg', alt: 'Swimming pool surrounded by indigenous bush', span: 'col-span-1' },
+  { src: '/images/pool-actual.jpg', alt: 'The actual swimming pool surrounded by indigenous bush', span: 'col-span-1' },
   { src: '/images/lodge-65.jpg', alt: 'Poolside relaxation under Malawian sun', span: 'col-span-1' },
 ]
 
@@ -65,27 +65,27 @@ export default function Home() {
       {/* 1. HERO SLIDER (Full-screen, left-aligned, single button, no badge) */}
       <HeroSlider />
 
-      {/* 2. RECOLORED & EDITED STATS SECTION */}
-      <section className="bg-white py-16 border-b border-forest-green/10 relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* 2. RECOLORED & COMPRESSED STATS SECTION (ONE SINGLE ROW ON ALL SCREENS) */}
+      <section className="bg-white py-6 sm:py-12 border-b border-forest-green/10 relative z-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
             {statDetails.map((stat, idx) => (
               <div
                 key={idx}
-                className="p-7 rounded-3xl bg-forest-light border border-forest-green/15 hover:border-forest-green/40 hover:shadow-lg transition-all group"
+                className="p-2.5 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-forest-light border border-forest-green/15 hover:border-forest-green/40 hover:shadow-md transition-all group"
               >
-                <div className="flex items-baseline gap-1.5 mb-2">
-                  <span className="text-4xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight group-hover:text-forest-green transition-colors">
+                <div className="flex items-baseline gap-1 mb-1">
+                  <span className="text-base sm:text-3xl lg:text-5xl font-extrabold text-[#14240E] tracking-tight group-hover:text-forest-green transition-colors">
                     {stat.value}
                   </span>
-                  <span className="text-xs uppercase font-extrabold text-forest-green tracking-wider">
+                  <span className="text-[8px] sm:text-[10px] lg:text-xs uppercase font-extrabold text-forest-green tracking-wider">
                     {stat.unit}
                   </span>
                 </div>
-                <p className="text-xs font-extrabold text-[#14240E] uppercase tracking-wider mb-1">
+                <p className="text-[9px] sm:text-xs font-extrabold text-[#14240E] uppercase tracking-tight truncate mb-0.5">
                   {stat.label}
                 </p>
-                <p className="text-[11px] text-[#14240E]/80 leading-relaxed font-normal">
+                <p className="text-[10px] lg:text-[11px] text-[#14240E]/80 leading-relaxed font-normal hidden md:block">
                   {stat.desc}
                 </p>
               </div>
@@ -347,45 +347,45 @@ export default function Home() {
               Enjoy Mkuyu without staying overnight. We welcome day guests for scheduled morning and afternoon game drives, pool relaxation, restaurant lunches, and sunset drinks on the watchtower.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
-                <div className="flex items-center gap-2 text-white font-bold text-sm">
-                  <FiCheck className="text-light-sage flex-shrink-0" size={18} />
-                  <span>Scheduled 4x4 Game Drives</span>
+            <div className="space-y-4 pt-4 border-t border-white/20">
+              <div className="flex items-start gap-3">
+                <FiCheck className="text-light-sage flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <h4 className="text-base font-extrabold text-white">Scheduled 4x4 Game Drives</h4>
+                  <p className="text-xs sm:text-sm text-white/80 font-normal mt-0.5">
+                    Morning Buck Pursuit &amp; golden-hour Dusk Expedition with trackers.
+                  </p>
                 </div>
-                <p className="text-xs text-white/80 pl-6">
-                  Morning Buck Pursuit & golden-hour Dusk Expedition with trackers.
-                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
-                <div className="flex items-center gap-2 text-white font-bold text-sm">
-                  <FiCheck className="text-light-sage flex-shrink-0" size={18} />
-                  <span>Swimming Pool & Loungers</span>
+              <div className="flex items-start gap-3">
+                <FiCheck className="text-light-sage flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <h4 className="text-base font-extrabold text-white">Swimming Pool &amp; Loungers</h4>
+                  <p className="text-xs sm:text-sm text-white/80 font-normal mt-0.5">
+                    Relaxing poolside escape surrounded by indigenous trees.
+                  </p>
                 </div>
-                <p className="text-xs text-white/80 pl-6">
-                  Relaxing poolside escape surrounded by indigenous trees.
-                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
-                <div className="flex items-center gap-2 text-white font-bold text-sm">
-                  <FiCheck className="text-light-sage flex-shrink-0" size={18} />
-                  <span>Restaurant & Safari Bar</span>
+              <div className="flex items-start gap-3">
+                <FiCheck className="text-light-sage flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <h4 className="text-base font-extrabold text-white">Restaurant &amp; Safari Bar</h4>
+                  <p className="text-xs sm:text-sm text-white/80 font-normal mt-0.5">
+                    Fresh farm-to-table lunch, cold local drinks, and refreshments.
+                  </p>
                 </div>
-                <p className="text-xs text-white/80 pl-6">
-                  Fresh farm-to-table lunch, cold local drinks, and refreshments.
-                </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
-                <div className="flex items-center gap-2 text-white font-bold text-sm">
-                  <FiCheck className="text-light-sage flex-shrink-0" size={18} />
-                  <span>360° Panoramic Watchtower</span>
+              <div className="flex items-start gap-3">
+                <FiCheck className="text-light-sage flex-shrink-0 mt-0.5" size={20} />
+                <div>
+                  <h4 className="text-base font-extrabold text-white">360° Panoramic Watchtower</h4>
+                  <p className="text-xs sm:text-sm text-white/80 font-normal mt-0.5">
+                    Climb above the canopy for unrivaled sunset and savanna vistas.
+                  </p>
                 </div>
-                <p className="text-xs text-white/80 pl-6">
-                  Climb above the canopy for unrivaled sunset and savanna vistas.
-                </p>
               </div>
             </div>
 

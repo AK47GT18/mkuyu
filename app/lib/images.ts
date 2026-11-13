@@ -51,6 +51,64 @@ function img(
 // square:    1070x1070
 
 export const lodgeImages: LodgeImage[] = [
+  // Primary Actual Lodge Grounds & Facilities
+  {
+    src: '/images/spherical-building.jpg',
+    alt: 'The Spherical Suites at night — Mkuyu Game Lodge',
+    category: 'accommodation',
+    width: 1070,
+    height: 713,
+  },
+  {
+    src: '/images/pool-actual.jpg',
+    alt: 'Swimming pool and sun loungers — Mkuyu Game Lodge',
+    category: 'pool',
+    width: 1070,
+    height: 713,
+  },
+  {
+    src: '/images/playground.jpg',
+    alt: 'Kids adventure playground with carousel and swings — Mkuyu Game Lodge',
+    category: 'facilities',
+    width: 1070,
+    height: 713,
+  },
+  {
+    src: '/images/bar-lounge.jpg',
+    alt: 'Thatched umbrella bar and lounge pavilion — Mkuyu Game Lodge',
+    category: 'dining',
+    width: 1070,
+    height: 713,
+  },
+  {
+    src: '/images/boma-lights.jpg',
+    alt: 'Starlit boma dining under fairy-lit trees — Mkuyu Game Lodge',
+    category: 'dining',
+    width: 1070,
+    height: 713,
+  },
+  {
+    src: '/images/tower-actual.jpg',
+    alt: 'The landmark spiral watchtower under the stars — Mkuyu Game Lodge',
+    category: 'activities',
+    width: 750,
+    height: 1000,
+  },
+  {
+    src: '/images/solar-roof.jpg',
+    alt: '100% off-grid clean solar rooftop installation — Mkuyu Game Lodge',
+    category: 'facilities',
+    width: 1070,
+    height: 713,
+  },
+  {
+    src: '/images/ostrich-wildlife.jpg',
+    alt: 'Resident flock of ostriches in the bush — Mkuyu Game Lodge',
+    category: 'wildlife',
+    width: 1070,
+    height: 713,
+  },
+
   // hero: lodge-03 to lodge-07
   img(3, 'hero', 1070, 713),
   img(4, 'hero', 1070, 713),

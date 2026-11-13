@@ -53,8 +53,8 @@ const experiences = [
     subtitle: 'Panoramic views across the Malawian bush',
     description:
       "Climb the reserve's landmark watchtower for unbroken 360-degree panoramic views stretching across the savanna. Best experienced at dawn as amber light floods the marula trees, or at sunset with chilled drinks as wildlife settles into the dusk.",
-    image: '/images/lodge-42.jpg',
-    imageAlt: 'Elevated view from Mkuyu watchtower looking over tree canopy and water pan',
+    image: '/images/tower-actual.jpg',
+    imageAlt: 'The actual landmark spiral watchtower under the stars at Mkuyu',
     icon: <GiWatchtower size={28} className="text-forest-green" />,
     highlights: [
       'Uninterrupted 360° views across 332.15 hectares of wilderness',
@@ -87,12 +87,12 @@ const experiences = [
   {
     id: 'dining',
     tag: 'Bush Cuisine & Boma',
-    title: 'Bush Dining',
-    subtitle: 'Local and continental cuisine',
+    title: 'Bush Dining & Bar Lounge',
+    subtitle: 'Thatched umbrella bar and starlit dining',
     description:
-      'Our open-air restaurant celebrates fresh, locally sourced Malawian produce paired with international classics. Dine surrounded by birdsong under our timber pavilion, or gather around the evening boma firepit for traditional braai barbecues and cold drinks under a canopy of stars.',
-    image: '/images/lodge-27.jpg',
-    imageAlt: 'Bush dining spread — pizzas and local Malawian cuisine at Mkuyu',
+      'Our open-air restaurant and giant thatched umbrella bar pavilion celebrate fresh, locally sourced Malawian produce paired with international classics. Dine surrounded by birdsong under our timber pavilion, or gather around the evening boma firepit under trees illuminated with fairy lights.',
+    image: '/images/bar-lounge.jpg',
+    imageAlt: 'Giant thatched umbrella bar lounge and dining pavilion at Mkuyu',
     icon: <GiCampfire size={28} className="text-forest-green" />,
     highlights: [
       'Hearty safari breakfasts, light lunches, and fireside dinners',
@@ -106,21 +106,40 @@ const experiences = [
   {
     id: 'pool',
     tag: 'Tranquil Refreshment',
-    title: 'Swimming Pool',
-    subtitle: 'Surrounded by indigenous trees',
+    title: 'Swimming Pool & Sun Deck',
+    subtitle: 'Surrounded by indigenous trees and loungers',
     description:
-      'A crystal-clear pool fringed by native trees and comfortable sun loungers offers the ultimate midday escape between game drives. Relax with a chilled drink, listen to weaver birds in the branches, and cool off under the warm Malawian sun.',
-    image: '/images/lodge-14.jpg',
-    imageAlt: 'Crystal-clear swimming pool with timber sun loungers and indigenous trees at Mkuyu',
+      'Our crystal-clear swimming pool fringed by native shade trees and comfortable sun loungers offers the ultimate midday escape between game drives. Relax with a chilled drink, listen to weaver birds in the branches, and cool off under the warm Malawian sun.',
+    image: '/images/pool-actual.jpg',
+    imageAlt: 'The actual crystal-clear swimming pool with timber sun loungers at Mkuyu',
     icon: <GiWaterPolo size={28} className="text-forest-green" />,
     highlights: [
-      'Crystal-clear pool secluded in a tranquil natural clearing',
-      'Fringed by shaded loungers and indigenous trees',
+      'Crystal-clear pool with stepped shallow and deep swimming zones',
+      'Fringed by shaded loungers, stone terrace, and indigenous trees',
       'Poolside beverage and light lunch service from the safari bar',
       'Full access included with day passes and overnight bookings',
     ],
     ctaText: 'Inquire Pool Pass',
     ctaHref: '/contact?type=pool',
+  },
+  {
+    id: 'playground',
+    tag: 'Family Safari & Play',
+    title: 'Kids Adventure Playground',
+    subtitle: 'Safe, shaded outdoor fun for little explorers',
+    description:
+      'Set in soft savanna sand under mature indigenous shade trees, our dedicated kids playground features a spinning carousel merry-go-round, slide, swings, and climbing frames. Parents can relax nearby with a cool drink while children play safely between game drives.',
+    image: '/images/playground.jpg',
+    imageAlt: 'Kids outdoor adventure playground with carousel and swings at Mkuyu',
+    icon: <GiFootprint size={28} className="text-forest-green" />,
+    highlights: [
+      'Safe, enclosed sandy play park under native shade trees',
+      'Carousel merry-go-round, swings, slide and climbing frames',
+      'Child-friendly safari environment close to the pool and restaurant',
+      'Free access for all day visitors and overnight family guests',
+    ],
+    ctaText: 'Inquire Family Safari',
+    ctaHref: '/contact?type=family',
   },
   {
     id: 'camping',
@@ -153,43 +172,198 @@ export default function ActivitiesPage() {
         imageAlt="Safari game drive in Mkuyu Game Ranch"
       />
 
-      {/* Intro section */}
-      <section className="py-24 bg-white border-b border-forest-green/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-4">
-            Experiences at Mkuyu
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] mb-6 tracking-tight">
-            Immersive safari adventures in Central Malawi
-          </h2>
-          <p className="text-[#14240E] text-base sm:text-lg leading-relaxed">
-            Whether tracking zebra and waterbuck in our specially modified open 4x4 vehicles, walking ancient marula trails with certified FGASA rangers, or sipping sundowners on our landmark watchtower, every activity at Mkuyu is crafted for deep, unhurried connection with nature.
-          </p>
-        </div>
-      </section>
-
-      {/* Day Visitor Banner */}
-      <section className="py-12 bg-forest-light border-b border-forest-green/10">
+      {/* Blended Experiences Intro & Day Visitor Welcome */}
+      <section className="py-20 bg-white border-b border-forest-green/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-forest-green text-white rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="space-y-3 max-w-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Narrative */}
+            <div className="lg:col-span-7 space-y-5">
+              <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1">
+                Experiences at Mkuyu
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight leading-tight">
+                Immersive safari adventures in Central Malawi
+              </h2>
+              <p className="text-[#14240E] text-base sm:text-lg leading-relaxed font-normal">
+                Whether tracking zebra and waterbuck in our specially modified open 4x4 vehicles, walking ancient marula trails with certified FGASA rangers, or sipping sundowners on our landmark watchtower, every activity at Mkuyu is crafted for deep, unhurried connection with nature.
+              </p>
+            </div>
+
+            {/* Right Blended Day Visit Panel */}
+            <div className="lg:col-span-5 bg-[#14240E] text-white p-7 sm:p-8 rounded-2xl shadow-xl space-y-4 border border-white/10">
               <div className="flex items-center gap-2 text-light-sage text-xs font-extrabold tracking-wider uppercase">
                 <FiClock size={16} />
                 <span>Open 7 Days • 08:30 – 18:30 Daily</span>
               </div>
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
                 Planning a Day Trip from Lilongwe or Lake Malawi?
               </h3>
-              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+              <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-normal">
                 Mkuyu welcomes day visitors daily between {LODGE_FACTS.hours}. Enjoy scheduled morning and afternoon game drives, relax by our pool, enjoy a freshly prepared lunch, and climb the watchtower.
               </p>
+              <div className="pt-2">
+                <Link
+                  href="/contact?type=day-visit"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-forest-green hover:bg-[#4A602B] text-white font-extrabold rounded-full text-xs uppercase tracking-widest transition-all shadow-md hover:scale-105"
+                >
+                  <span>Book a Day Visit</span>
+                  <FiArrowRight size={14} />
+                </Link>
+              </div>
             </div>
-            <Link
-              href="/contact?type=day-visit"
-              className="px-9 py-4 bg-white text-forest-green hover:bg-forest-mint font-extrabold rounded-full text-xs uppercase tracking-widest transition-all shadow-xl hover:scale-105 flex-shrink-0"
+
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION OF CARDS: SAFARI HIGHLIGHTS AT A GLANCE */}
+      <section className="py-16 bg-forest-light border-b border-forest-green/15">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-left mb-10">
+            <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-2">
+              At A Glance
+            </span>
+            <h3 className="text-2xl sm:text-4xl font-extrabold text-[#14240E] tracking-tight">
+              Featured Safari Highlights
+            </h3>
+            <p className="text-sm text-[#14240E]/80 mt-1 max-w-2xl font-normal">
+              Browse our core safari pillars below, or jump directly to detailed inclusions, timings, and guide profiles.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1: 4x4 Game Drives */}
+            <a
+              href="#game-drives"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-forest-green/15 flex flex-col justify-between group hover:-translate-y-1"
             >
-              Book a Day Visit
-            </Link>
+              <div>
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src="/images/lodge-40.jpg"
+                    alt="Open 4x4 safari drive tracking wildlife"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-forest-green text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                    4x4 Safaris
+                  </div>
+                </div>
+                <div className="p-5 space-y-2">
+                  <h4 className="text-lg font-extrabold text-[#14240E] group-hover:text-forest-green transition-colors">
+                    Game Drives
+                  </h4>
+                  <p className="text-xs text-[#14240E]/80 leading-relaxed">
+                    Specially modified open 4x4 vehicles with tiered seating for unobstructed 360° savanna photography.
+                  </p>
+                </div>
+              </div>
+              <div className="p-5 pt-0 border-t border-forest-green/10 mt-3 flex items-center justify-between text-xs font-extrabold text-forest-green uppercase tracking-wider">
+                <span>View Schedule</span>
+                <FiArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </a>
+
+            {/* Card 2: Guided Bush Walks */}
+            <a
+              href="#bush-walks"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-forest-green/15 flex flex-col justify-between group hover:-translate-y-1"
+            >
+              <div>
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src="/images/lodge-42.jpg"
+                    alt="Certified FGASA ranger guiding walking safari"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-forest-green text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                    On Foot
+                  </div>
+                </div>
+                <div className="p-5 space-y-2">
+                  <h4 className="text-lg font-extrabold text-[#14240E] group-hover:text-forest-green transition-colors">
+                    Guided Bush Walks
+                  </h4>
+                  <p className="text-xs text-[#14240E]/80 leading-relaxed">
+                    Master the ancient art of tracking, read wildlife spoor, and explore medicinal tree botany with FGASA guides.
+                  </p>
+                </div>
+              </div>
+              <div className="p-5 pt-0 border-t border-forest-green/10 mt-3 flex items-center justify-between text-xs font-extrabold text-forest-green uppercase tracking-wider">
+                <span>Explore Trails</span>
+                <FiArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </a>
+
+            {/* Card 3: Landmark Watchtower */}
+            <a
+              href="#watchtower"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-forest-green/15 flex flex-col justify-between group hover:-translate-y-1"
+            >
+              <div>
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src="/images/tower-actual.jpg"
+                    alt="Actual landmark spiral watchtower under starry savanna sky"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-forest-green text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                    360° Lookout
+                  </div>
+                </div>
+                <div className="p-5 space-y-2">
+                  <h4 className="text-lg font-extrabold text-[#14240E] group-hover:text-forest-green transition-colors">
+                    The Watchtower
+                  </h4>
+                  <p className="text-xs text-[#14240E]/80 leading-relaxed">
+                    Spiral lookout platform rising above the acacia canopy for breathtaking sunset sundowners and bird spotting.
+                  </p>
+                </div>
+              </div>
+              <div className="p-5 pt-0 border-t border-forest-green/10 mt-3 flex items-center justify-between text-xs font-extrabold text-forest-green uppercase tracking-wider">
+                <span>View Vistas</span>
+                <FiArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </a>
+
+            {/* Card 4: Pool & Kids Playground */}
+            <a
+              href="#playground"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-forest-green/15 flex flex-col justify-between group hover:-translate-y-1"
+            >
+              <div>
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src="/images/playground.jpg"
+                    alt="Kids adventure sand playground with merry-go-round and swings"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-forest-green text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                    Family &amp; Leisure
+                  </div>
+                </div>
+                <div className="p-5 space-y-2">
+                  <h4 className="text-lg font-extrabold text-[#14240E] group-hover:text-forest-green transition-colors">
+                    Kids Park &amp; Pool
+                  </h4>
+                  <p className="text-xs text-[#14240E]/80 leading-relaxed">
+                    Shaded carousel merry-go-round, swings, and crystal pool loungers for families between safari drives.
+                  </p>
+                </div>
+              </div>
+              <div className="p-5 pt-0 border-t border-forest-green/10 mt-3 flex items-center justify-between text-xs font-extrabold text-forest-green uppercase tracking-wider">
+                <span>See Grounds</span>
+                <FiArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </a>
           </div>
         </div>
       </section>

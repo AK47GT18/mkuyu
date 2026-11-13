@@ -197,9 +197,21 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom bar with Privacy & Terms */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">
-          <p>© 2025 Mkuyu Game Lodge. Salima, Malawi. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <p>© 2025 Mkuyu Game Lodge. Salima, Malawi. All rights reserved.</p>
+            <span className="hidden sm:inline">•</span>
+            <div className="flex items-center gap-3 text-white/80">
+              <Link href="/terms" className="hover:text-light-sage transition-colors underline">
+                Terms &amp; Conditions
+              </Link>
+              <span>•</span>
+              <Link href="/privacy" className="hover:text-light-sage transition-colors underline">
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
           <div className="flex items-center gap-4 text-[11px] text-light-sage font-semibold uppercase tracking-wider">
             <span>332.15 Hectares Reserve</span>
             <span>•</span>

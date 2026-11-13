@@ -57,25 +57,34 @@ export default function Navbar({ transparent = true }: NavbarProps) {
             />
           </Link>
 
-          {/* Desktop nav links with active select pill indicator */}
-          <ul className="hidden lg:flex items-center gap-2 xl:gap-3">
+          {/* Desktop nav links with active and hover underline indicator */}
+          <ul className="hidden lg:flex items-center gap-5 xl:gap-7">
             {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
               const active = isActive(link.href)
               return (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`text-xs font-bold tracking-wider uppercase transition-all px-4 py-2 rounded-full ${
-                      active
-                        ? isSolid
-                          ? 'bg-forest-light text-forest-green border border-forest-green/25 font-extrabold shadow-sm'
-                          : 'bg-white/20 text-white backdrop-blur-md border border-white/40 font-extrabold shadow-sm'
-                        : isSolid
-                        ? 'text-[#14240E] hover:text-forest-green hover:bg-forest-light/60'
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                    className={`group relative py-1 text-xs font-bold tracking-wider uppercase transition-colors inline-flex flex-col ${
+                      isSolid
+                        ? active
+                          ? 'text-forest-green font-extrabold'
+                          : 'text-[#14240E] hover:text-forest-green'
+                        : active
+                        ? 'text-white font-extrabold'
+                        : 'text-white/85 hover:text-white'
                     }`}
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    <span
+                      className={`h-[2px] w-full mt-0.5 rounded-full transition-all duration-200 ${
+                        active
+                          ? isSolid ? 'bg-forest-green opacity-100' : 'bg-white opacity-100'
+                          : isSolid
+                          ? 'bg-forest-green opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 origin-left'
+                          : 'bg-white opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 origin-left'
+                      }`}
+                    />
                   </Link>
                 </li>
               )
