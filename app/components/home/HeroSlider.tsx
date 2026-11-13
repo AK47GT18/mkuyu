@@ -70,9 +70,9 @@ export default function HeroSlider() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/85 via-transparent to-black/40" />
       <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.14),_transparent_60%)]" />
 
-      {/* Hero Content — Rich, Balanced & Aligned to the Left */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-16">
-        <div className="max-w-3xl text-left space-y-6">
+      {/* Hero Content — Rich, Balanced & Aligned to the Left (Dropped Down) */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-36 sm:pt-44 lg:pt-48 pb-16">
+        <div className="max-w-3xl text-left space-y-6 mt-4 sm:mt-8 lg:mt-12">
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight">
             Where the Malawian bush speaks in tranquility

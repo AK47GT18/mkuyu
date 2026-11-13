@@ -4,10 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FiCheck, FiArrowRight, FiSun, FiDroplet } from 'react-icons/fi'
 import { GiWoodCabin, GiCampfire } from 'react-icons/gi'
-import { MdDinnerDining, MdEco, MdSolarPower, MdWaterDrop } from 'react-icons/md'
+import { MdDinnerDining } from 'react-icons/md'
 import PageShell from '@/app/components/layout/PageShell'
 import PageHero from '@/app/components/ui/PageHero'
 import CtaSection from '@/app/components/ui/CtaSection'
+import AnimatedCounter from '@/app/components/ui/AnimatedCounter'
 import { LODGE_FACTS } from '@/app/lib/content'
 const roomList = [
   {
@@ -117,6 +118,42 @@ export default function StayAndDinePage() {
             <p className="text-sm sm:text-base text-[#14240E]/80 mt-3 font-normal leading-relaxed">
               Explore our landmark spherical brick architecture, shaded kids adventure playground, crystal-clear swimming pool, giant thatched bar pavilion, and night-lit watchtower.
             </p>
+          </div>
+
+          {/* Quick Animated Metric Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 py-4 px-6 bg-forest-light/70 rounded-2xl border border-forest-green/15 text-center">
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={5} />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Sanctuaries
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={332.15} decimals={2} />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Hectares Reserve
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={100} suffix="%" />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Solar Powered
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={24} suffix="/7" />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Guest Care
+              </span>
+            </div>
           </div>
 
           {/* Spacious Showcase Grid (Clean & Breathable) */}
@@ -298,46 +335,6 @@ export default function StayAndDinePage() {
               </div>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* 2. FIVE EN SUITE SANCTUARIES (SPACIOUS, BALANCED & CLEAN) */}
-      <section className="py-24 bg-forest-light">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <div>
-            <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-4">
-              Five En Suite Sanctuaries Amidst the African Wild
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight">
-              Designed to breathe with the landscape
-            </h2>
-          </div>
-          <p className="text-[#14240E]/85 text-base sm:text-lg leading-relaxed font-normal max-w-3xl mx-auto">
-            Our eco-friendly rooms offer an intimate connection to nature without compromising on the refined comforts of a boutique retreat. Built using pioneering eco-beam technology, each room features a private deck and locally sourced timber furniture, crafted by artisans from the neighbouring village.
-          </p>
-
-          {/* Sustainable Elegance Banner */}
-          <div className="bg-white border border-forest-green/20 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm text-left">
-            <div className="space-y-1">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-forest-green">
-                Sustainable Elegance
-              </p>
-              <p className="text-xs sm:text-sm font-semibold text-[#14240E] leading-relaxed">
-                Every room features a private deck and locally sourced timber furniture, crafted by artisans from the neighbouring village.
-              </p>
-            </div>
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <div className="w-11 h-11 rounded-xl bg-forest-light border border-forest-green/20 flex items-center justify-center text-forest-green" title="Eco-friendly craft">
-                <MdEco size={22} />
-              </div>
-              <div className="w-11 h-11 rounded-xl bg-forest-light border border-forest-green/20 flex items-center justify-center text-forest-green" title="100% Solar Power">
-                <MdSolarPower size={22} />
-              </div>
-              <div className="w-11 h-11 rounded-xl bg-forest-light border border-forest-green/20 flex items-center justify-center text-forest-green" title="Greywater Recycling">
-                <MdWaterDrop size={22} />
-              </div>
-            </div>
           </div>
         </div>
       </section>

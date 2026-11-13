@@ -19,6 +19,7 @@ import {
 import HeroSlider from '@/app/components/home/HeroSlider'
 import PageShell from '@/app/components/layout/PageShell'
 import CtaSection from '@/app/components/ui/CtaSection'
+import AnimatedCounter from '@/app/components/ui/AnimatedCounter'
 import { STATS, SERVICES, SUSTAINABILITY_POINTS, LODGE_FACTS } from '@/app/lib/content'
 
 const serviceIcons: Record<string, React.ReactNode> = {
@@ -75,9 +76,10 @@ export default function Home() {
                 className="px-2 sm:px-6 lg:px-8 text-left flex flex-col justify-center"
               >
                 <div className="flex items-baseline gap-1 sm:gap-1.5 mb-0.5">
-                  <span className="text-lg sm:text-3xl lg:text-5xl font-extrabold text-[#14240E] tracking-tight">
-                    {stat.value}
-                  </span>
+                  <AnimatedCounter
+                    value={stat.value}
+                    className="text-lg sm:text-3xl lg:text-5xl font-extrabold text-[#14240E] tracking-tight"
+                  />
                   <span className="text-[8px] sm:text-[10px] lg:text-xs uppercase font-extrabold text-forest-green tracking-wider">
                     {stat.unit}
                   </span>

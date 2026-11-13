@@ -12,6 +12,7 @@ import {
 import PageShell from '@/app/components/layout/PageShell'
 import PageHero from '@/app/components/ui/PageHero'
 import CtaSection from '@/app/components/ui/CtaSection'
+import AnimatedCounter from '@/app/components/ui/AnimatedCounter'
 import { BLOG_POSTS } from '@/app/lib/blog-data'
 
 const categories = [
@@ -265,19 +266,27 @@ export default function BlogPage() {
                   </p>
                   <div className="grid grid-cols-2 gap-2.5">
                     <div className="p-3 rounded-xl bg-forest-light border border-forest-green/15 text-center">
-                      <p className="text-2xl font-extrabold text-[#14240E]">27</p>
+                      <p className="text-2xl font-extrabold text-[#14240E]">
+                        <AnimatedCounter value={27} />
+                      </p>
                       <p className="text-[10px] font-extrabold text-forest-green uppercase tracking-wider mt-0.5">Plains Zebras</p>
                     </div>
                     <div className="p-3 rounded-xl bg-forest-light border border-forest-green/15 text-center">
-                      <p className="text-2xl font-extrabold text-[#14240E]">27</p>
+                      <p className="text-2xl font-extrabold text-[#14240E]">
+                        <AnimatedCounter value={27} />
+                      </p>
                       <p className="text-[10px] font-extrabold text-forest-green uppercase tracking-wider mt-0.5">Waterbuck</p>
                     </div>
                     <div className="p-3 rounded-xl bg-forest-light border border-forest-green/15 text-center">
-                      <p className="text-2xl font-extrabold text-[#14240E]">21</p>
+                      <p className="text-2xl font-extrabold text-[#14240E]">
+                        <AnimatedCounter value={21} />
+                      </p>
                       <p className="text-[10px] font-extrabold text-forest-green uppercase tracking-wider mt-0.5">Nyala</p>
                     </div>
                     <div className="p-3 rounded-xl bg-forest-light border border-forest-green/15 text-center">
-                      <p className="text-2xl font-extrabold text-[#14240E]">19</p>
+                      <p className="text-2xl font-extrabold text-[#14240E]">
+                        <AnimatedCounter value={19} />
+                      </p>
                       <p className="text-[10px] font-extrabold text-forest-green uppercase tracking-wider mt-0.5">Bushbuck</p>
                     </div>
                   </div>

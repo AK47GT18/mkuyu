@@ -5,12 +5,13 @@ import { GiWatchtower, GiJeep, GiFootprint } from 'react-icons/gi'
 import PageShell from '@/app/components/layout/PageShell'
 import PageHero from '@/app/components/ui/PageHero'
 import CtaSection from '@/app/components/ui/CtaSection'
+import AnimatedCounter from '@/app/components/ui/AnimatedCounter'
 
 const wildlifeGallery = [
-  { src: '/images/lodge-32.jpg', name: 'Plains Zebra', count: '27 Resident', desc: 'Striking black-and-white patterns emerging from the golden savanna' },
-  { src: '/images/ostrich-wildlife.jpg', name: 'Resident Ostriches', count: '10 Flock', desc: 'Towering sentinels of the open savanna pans and marula clearings' },
-  { src: '/images/lodge-04.jpg', name: 'Nyala & Bushbuck', count: '40 Browsers', desc: 'Browsing through indigenous marula and acacia groves at dawn and dusk' },
-  { src: '/images/lodge-62.jpg', name: 'Herons & Waterbirds', count: '100+ Species', desc: 'Grey Heron wading through the reserve\'s lily-covered water pans' },
+  { src: '/images/lodge-32.jpg', name: 'Plains Zebra', countVal: 27, countSuffix: '', countLabel: 'Resident', desc: 'Striking black-and-white patterns emerging from the golden savanna' },
+  { src: '/images/ostrich-wildlife.jpg', name: 'Resident Ostriches', countVal: 10, countSuffix: '', countLabel: 'Flock', desc: 'Towering sentinels of the open savanna pans and marula clearings' },
+  { src: '/images/lodge-04.jpg', name: 'Nyala & Bushbuck', countVal: 40, countSuffix: '', countLabel: 'Browsers', desc: 'Browsing through indigenous marula and acacia groves at dawn and dusk' },
+  { src: '/images/lodge-62.jpg', name: 'Herons & Waterbirds', countVal: 100, countSuffix: '+', countLabel: 'Species', desc: 'Grey Heron wading through the reserve\'s lily-covered water pans' },
 ]
 
 export default function ReservePage() {
@@ -88,8 +89,44 @@ export default function ReservePage() {
               Inhabitants of Mkuyu
             </h2>
             <p className="text-[#14240E] text-base sm:text-lg mt-3 leading-relaxed">
-              Home to 145 resident animals roaming free across 332.15 hectares of pristine Malawian savanna.
+              Home to <span className="font-extrabold"><AnimatedCounter value={145} /></span> resident animals roaming free across <span className="font-extrabold"><AnimatedCounter value={332.15} decimals={2} /></span> hectares of pristine Malawian savanna.
             </p>
+          </div>
+
+          {/* Reserve Key Metrics Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 py-4 px-6 bg-white/70 backdrop-blur-xs rounded-2xl border border-forest-green/15 text-center">
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={332.15} decimals={2} />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Hectares Protected
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={145} />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Resident Animals
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={27} />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Plains Zebras
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={100} suffix="%" />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Solar Off-Grid
+              </span>
+            </div>
           </div>
 
           {/* Photo gallery of wildlife inhabitants */}
@@ -108,8 +145,9 @@ export default function ReservePage() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-5 text-white">
-                  <span className="text-[10px] uppercase font-extrabold tracking-widest text-light-sage mb-1">
-                    {item.count}
+                  <span className="text-[11px] uppercase font-extrabold tracking-widest text-light-sage mb-1 flex items-center gap-1">
+                    <AnimatedCounter value={item.countVal} suffix={item.countSuffix} />
+                    <span>{item.countLabel}</span>
                   </span>
                   <h4 className="text-lg font-extrabold leading-tight">{item.name}</h4>
                   <p className="text-xs text-white/80 mt-1 line-clamp-2">{item.desc}</p>

@@ -5,6 +5,7 @@ import { FiClock, FiCheck, FiArrowRight } from 'react-icons/fi'
 import PageShell from '@/app/components/layout/PageShell'
 import PageHero from '@/app/components/ui/PageHero'
 import CtaSection from '@/app/components/ui/CtaSection'
+import AnimatedCounter from '@/app/components/ui/AnimatedCounter'
 import { LODGE_FACTS } from '@/app/lib/content'
 
 const experiences = [
@@ -220,6 +221,42 @@ export default function ActivitiesPage() {
       {/* SECTION OF CARDS: SAFARI HIGHLIGHTS AT A GLANCE */}
       <section className="py-16 bg-forest-light border-b border-forest-green/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Activity Metrics Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 py-4 px-6 bg-white/80 backdrop-blur-xs rounded-2xl border border-forest-green/15 text-center">
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={3} />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Open 4x4 Fleet
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={332.15} decimals={2} />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Hectares Explored
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={100} suffix="+" />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Recorded Bird Species
+              </span>
+            </div>
+            <div className="p-2">
+              <span className="text-3xl sm:text-4xl font-extrabold text-[#14240E] block">
+                <AnimatedCounter value={360} suffix="°" />
+              </span>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-forest-green mt-1 block">
+                Watchtower Panorama
+              </span>
+            </div>
+          </div>
+
           <div className="text-left mb-10">
             <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-2">
               At A Glance
