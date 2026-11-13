@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { RxCross2 } from 'react-icons/rx'
@@ -14,6 +15,12 @@ interface NavbarProps {
 export default function Navbar({ transparent = true }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/'
+    return pathname === href || pathname?.startsWith(href + '/')
+  }
 
   useEffect(() => {
     if (!transparent) return
@@ -34,7 +41,7 @@ export default function Navbar({ transparent = true }: NavbarProps) {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isSolid ? 'bg-white shadow-md border-b border-green-950/5' : 'nav-transparent'
+          isSolid ? 'bg-white shadow-md border-b border-green-950/5' : 'bg-transparent'
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
@@ -50,31 +57,38 @@ export default function Navbar({ transparent = true }: NavbarProps) {
             />
           </Link>
 
-          {/* Desktop nav links */}
-          <ul className="hidden lg:flex items-center gap-7 xl:gap-9">
-            {NAV_LINKS.filter((l) => l.label !== 'Home').map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`text-sm font-semibold tracking-wider uppercase transition-all hover:scale-105 ${
-                    isSolid
-                      ? 'text-[#14240E] hover:text-forest-green'
-                      : 'text-white hover:text-light-sage drop-shadow-sm'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+          {/* Desktop nav links with active select pill indicator */}
+          <ul className="hidden lg:flex items-center gap-2 xl:gap-3">
+            {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
+              const active = isActive(link.href)
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`text-xs font-bold tracking-wider uppercase transition-all px-4 py-2 rounded-full ${
+                      active
+                        ? isSolid
+                          ? 'bg-forest-light text-forest-green border border-forest-green/25 font-extrabold shadow-sm'
+                          : 'bg-white/20 text-white backdrop-blur-md border border-white/40 font-extrabold shadow-sm'
+                        : isSolid
+                        ? 'text-[#14240E] hover:text-forest-green hover:bg-forest-light/60'
+                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
 
-          {/* CTA + hamburger */}
+          {/* CTA (Contact Us) + hamburger */}
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full bg-forest-green hover:bg-forest-green/90 text-white shadow-md shadow-green-950/20 transition-all hover:scale-105"
+              className="hidden sm:inline-flex items-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider rounded-full bg-forest-green hover:bg-[#4A602B] text-white shadow-md shadow-green-950/20 transition-all hover:scale-105"
             >
-              Book Now
+              Contact Us
             </Link>
 
             <button
@@ -112,26 +126,34 @@ export default function Navbar({ transparent = true }: NavbarProps) {
             </button>
           </div>
 
-          <nav className="flex-1 flex flex-col justify-center px-8 gap-6">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-white text-3xl font-bold tracking-tight hover:text-light-sage transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="flex-1 flex flex-col justify-center px-8 gap-3">
+            {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
+              const active = isActive(link.href)
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`text-2xl sm:text-3xl font-bold tracking-tight transition-all flex items-center justify-between py-3 px-4 rounded-xl ${
+                    active
+                      ? 'text-white bg-white/15 font-extrabold border border-white/20'
+                      : 'text-white/80 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  {active && <span className="h-2.5 w-2.5 rounded-full bg-light-sage shadow-xs" />}
+                </Link>
+              )
+            })}
           </nav>
 
           <div className="px-8 pb-10">
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex w-full items-center justify-center px-6 py-4 bg-forest-green text-white text-sm font-bold uppercase tracking-wider rounded-xl shadow-lg hover:bg-forest-green/90 transition-colors"
+              className="inline-flex w-full items-center justify-center px-6 py-4 bg-forest-green text-white text-sm font-bold uppercase tracking-wider rounded-xl shadow-lg hover:bg-[#4A602B] transition-colors"
             >
-              Book Your Safari
+              Contact Us
             </Link>
           </div>
         </div>

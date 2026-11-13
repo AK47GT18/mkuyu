@@ -17,7 +17,7 @@ export default function PageHero({
   imageAlt,
 }: PageHeroProps) {
   return (
-    <div className="relative h-[400px] w-full overflow-hidden">
+    <div className="relative min-h-[460px] sm:min-h-[500px] w-full overflow-hidden flex items-end">
       {/* Background image */}
       <Image
         src={image}
@@ -28,34 +28,23 @@ export default function PageHero({
         sizes="100vw"
         className="object-cover"
       />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/55" />
+      {/* Dark neutral contrast overlay — natural photo colors without green glare */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black/80" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col justify-end pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        {breadcrumb && (
-          <p className="text-cream/70 text-xs tracking-widest uppercase mb-3 flex items-center gap-2">
-            <Link href="/" className="hover:text-cream transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <span>{breadcrumb}</span>
-          </p>
-        )}
-        {!breadcrumb && (
-          <p className="text-cream/70 text-xs tracking-widest uppercase mb-3">
-            <Link href="/" className="hover:text-cream transition-colors">
-              Home
-            </Link>
-            {' '}/{' '}
-            <span>{title}</span>
-          </p>
-        )}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-3">
+      <div className="relative z-10 w-full pt-32 pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <p className="text-white/80 text-xs font-bold tracking-widest uppercase mb-3 flex items-center gap-2">
+          <Link href="/" className="hover:text-white transition-colors">
+            Home
+          </Link>
+          <span>/</span>
+          <span>{breadcrumb || title}</span>
+        </p>
+        <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-3">
           {title}
         </h1>
         {subtitle && (
-          <p className="text-cream/90 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p className="text-white text-base sm:text-lg max-w-2xl leading-relaxed">
             {subtitle}
           </p>
         )}

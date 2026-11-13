@@ -6,7 +6,7 @@ interface PageShellProps {
   transparentNav?: boolean
 }
 
-export default function PageShell({ children, transparentNav = false }: PageShellProps) {
+export default function PageShell({ children, transparentNav = true }: PageShellProps) {
   return (
     <>
       <Navbar transparent={transparentNav} />

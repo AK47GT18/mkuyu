@@ -1,5 +1,5 @@
 export const LODGE_FACTS = {
-  hectares: 330,
+  hectares: 332.15,
   animals: 145,
   rooms: 5,
   maxGuests: 12,
@@ -14,11 +14,41 @@ export const LODGE_FACTS = {
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'The Reserve', href: '/reserve' },
-  { label: 'Accommodation', href: '/accommodation' },
+  { label: 'Stay & Dine', href: '/accommodation' },
   { label: 'Activities', href: '/activities' },
-  { label: 'Dining', href: '/dining' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact', href: '/contact' },
+]
+
+export const WILDLIFE_CENSUS = [
+  { name: 'Plains Zebra', scientific: 'Equus quagga', count: 27, desc: 'Striking patterns against the golden savanna' },
+  { name: 'Waterbuck', scientific: 'Kobus ellipsiprymnus', count: 27, desc: 'Graceful antelopes grazing along grassy pans' },
+  { name: 'Nyala', scientific: 'Tragelaphus angasii', count: 21, desc: 'Spiral-horned browsers in marula groves' },
+  { name: 'Bushbuck', scientific: 'Tragelaphus scriptus', count: 19, desc: 'Elusive woodland inhabitants near dense cover' },
+  { name: 'Impala', scientific: 'Aepyceros melampus', count: 14, desc: 'Agile herds roaming open acacia woodlands' },
+  { name: 'Sable Antelope', scientific: 'Hippotragus niger', count: 11, desc: 'Majestic scimitar horns & regal presence' },
+  { name: 'Desert Ostrich', scientific: 'Struthio camelus', count: 10, desc: 'Towering sentinels of the open plains' },
+  { name: 'Duiker', scientific: 'Sylvicapra grimmia', count: 10, desc: 'Compact solitary browsers among the scrub' },
+  { name: 'Emus', scientific: 'Dromaius novaehollandiae', count: 6, desc: 'Distinctive resident flock on the reserve' },
+]
+
+export const FLEET_DETAILS = [
+  {
+    title: 'Open-Air Design',
+    desc: '360-degree unobstructed views for optimal photography and wildlife spotting, featuring tiered seating.',
+    badge: 'Tiered Seating',
+  },
+  {
+    title: 'All-Terrain Power',
+    desc: '4x4 heavy-duty suspension modified for deep sand and rocky outcrops without compromising on smooth travel.',
+    badge: 'Heavy-Duty 4x4',
+  },
+  {
+    title: 'Onboard Comfort',
+    desc: 'Equipped with cold refreshments, field wildlife guides, and waterproof ponchos for unpredictable weather.',
+    badge: 'Full Amenities',
+  },
 ]
 
 export const SERVICES = [
@@ -27,7 +57,7 @@ export const SERVICES = [
     title: 'Safari Game Drives',
     subtitle: 'Buck Pursuit & Dusk Expedition',
     description:
-      'Board our open-sided 4x4 safari vehicles and venture deep into 330 hectares of protected Malawian bush. Our experienced trackers guide you through encounters with zebra, nyala, waterbuck, ostrich and a rich tapestry of birdlife. Choose the morning Buck Pursuit as the savanna awakens, or the golden-hour Dusk Expedition as the reserve settles into night.',
+      'Open 4x4 morning Buck Pursuit and golden-hour Dusk Expedition drives through 330 hectares of wild savanna with expert trackers.',
     icon: 'GiJeep',
   },
   {
@@ -35,15 +65,15 @@ export const SERVICES = [
     title: 'Guided Bush Walks',
     subtitle: 'Tracking, flora and birding on foot',
     description:
-      'Slow down and connect with the land on a guided walking trail through indigenous acacia and marula groves. Learn animal tracking, medicinal plant lore, and spot over 100 bird species with our naturalist guides.',
+      'Guided walking trails through indigenous marula and acacia groves to discover wildlife tracks, flora, and birdlife up close.',
     icon: 'GiFootprint',
   },
   {
     id: 'watchtower',
     title: 'The Watchtower',
-    subtitle: 'Panoramic views across the Malawian bush',
+    subtitle: 'Panoramic views across the bush',
     description:
-      "Climb the reserve's landmark watchtower for unbroken 360-degree views stretching across the savanna. Best experienced at sunrise or sunset, when the landscape is bathed in amber and the reserve comes alive.",
+      'An elevated lookout tower delivering 360° panoramic vistas across the reserve—the ultimate spot for sunrise and sunset views.',
     icon: 'GiWatchtower',
   },
   {
@@ -51,7 +81,7 @@ export const SERVICES = [
     title: 'Birdwatching',
     subtitle: 'Over 100 recorded species',
     description:
-      "The ranch's diverse mix of acacia woodland, marula groves and open grassland makes it a premier birding destination. From the Lilac-breasted Roller to the Bateleur Eagle, every walk reveals something remarkable.",
+      'Over 100 recorded bird species across woodland and savanna, from raptors and eagles to vibrant rollers.',
     icon: 'GiBirdTwitter',
   },
   {
@@ -59,7 +89,7 @@ export const SERVICES = [
     title: 'Eco Sanctuaries',
     subtitle: 'Five intimate en-suite retreats',
     description:
-      'Each of our five eco-sanctuaries is handcrafted using eco-beam technology and timber sourced and shaped by local village artisans. Private sun decks overlook marula groves, solar-heated showers refresh after game drives, and organic linens ensure deep rest in the heart of the Malawian bush.',
+      'Five handcrafted eco-sanctuaries featuring private sun decks, solar-heated showers, and local artisan timber craftsmanship.',
     icon: 'GiWoodCabin',
   },
   {
@@ -67,7 +97,7 @@ export const SERVICES = [
     title: 'Bush Dining',
     subtitle: 'Local and continental cuisine',
     description:
-      'Our open-air restaurant serves freshly prepared breakfasts, lunches and dinners drawing on locally sourced seasonal produce and traditional Malawian flavours. The bar stocks a carefully chosen selection of local beers, wines, and spirits — best enjoyed at the firepit as the sun goes down.',
+      'Freshly prepared local and continental cuisine, open-air restaurant dining, chilled drinks, and evening fireside boma dinners.',
     icon: 'GiCampfire',
   },
   {
@@ -75,7 +105,7 @@ export const SERVICES = [
     title: 'Swimming Pool',
     subtitle: 'Surrounded by indigenous trees',
     description:
-      'A crystal clear pool fringed by indigenous trees and sun loungers gives guests a tranquil space to unwind between safaris. Day visitors are welcome to combine a game drive with an afternoon swim and lunch.',
+      'Crystal-clear pool framed by indigenous trees and sun loungers for refreshing dips between morning and afternoon safaris.',
     icon: 'GiWaterPolo',
   },
   {
@@ -83,7 +113,7 @@ export const SERVICES = [
     title: 'Campsite',
     subtitle: 'Sleep under a canopy of stars',
     description:
-      "For those who want a more immersive experience, our dedicated campsite provides clean ablution facilities, a firepit area, and direct access to the reserve's trails. Wake up to birdsong and the sounds of the African bush.",
+      'Immersive wilderness camping under dark star-filled skies, complete with clean ablution blocks and firepit access.',
     icon: 'GiCampingTent',
   },
 ]

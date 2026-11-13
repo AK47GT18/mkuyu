@@ -13,24 +13,23 @@ import {
 import {
   FiArrowRight,
   FiClock,
-  FiMapPin,
   FiCheck,
-  FiCalendar,
-  FiUsers,
-  FiCompass,
+  FiPhone,
 } from 'react-icons/fi'
+import HeroSlider from '@/app/components/home/HeroSlider'
 import PageShell from '@/app/components/layout/PageShell'
+import CtaSection from '@/app/components/ui/CtaSection'
 import { STATS, SERVICES, SUSTAINABILITY_POINTS, LODGE_FACTS } from '@/app/lib/content'
 
 const serviceIcons: Record<string, React.ReactNode> = {
-  'game-drives': <GiJeep size={28} className="text-forest-green" />,
-  'bush-walks': <GiFootprint size={28} className="text-forest-green" />,
-  'watchtower': <GiWatchtower size={28} className="text-forest-green" />,
-  'birdwatching': <GiBirdTwitter size={28} className="text-forest-green" />,
-  'accommodation': <GiWoodCabin size={28} className="text-forest-green" />,
-  'dining': <GiCampfire size={28} className="text-forest-green" />,
-  'pool': <GiWaterPolo size={28} className="text-forest-green" />,
-  'camping': <GiCampingTent size={28} className="text-forest-green" />,
+  'game-drives': <GiJeep size={26} className="text-forest-green" />,
+  'bush-walks': <GiFootprint size={26} className="text-forest-green" />,
+  'watchtower': <GiWatchtower size={26} className="text-forest-green" />,
+  'birdwatching': <GiBirdTwitter size={26} className="text-forest-green" />,
+  'accommodation': <GiWoodCabin size={26} className="text-forest-green" />,
+  'dining': <GiCampfire size={26} className="text-forest-green" />,
+  'pool': <GiWaterPolo size={26} className="text-forest-green" />,
+  'camping': <GiCampingTent size={26} className="text-forest-green" />,
 }
 
 const serviceImages: Record<string, string> = {
@@ -44,6 +43,13 @@ const serviceImages: Record<string, string> = {
   'camping': '/images/lodge-61.jpg',
 }
 
+const statDetails = [
+  { value: '332.15', unit: 'Hectares', label: 'Protected Reserve', desc: 'Indigenous Malawian savanna & marula groves' },
+  { value: '145', unit: 'Animals', label: 'Resident Wildlife', desc: 'Plains zebras, nyalas, waterbucks & ostriches' },
+  { value: '5', unit: 'Sanctuaries', label: 'Eco Rooms', desc: 'Intimate boutique capacity for up to 12 guests' },
+  { value: '100%', unit: 'Solar', label: 'Off-Grid Energy', desc: 'Standalone solar power & solar hot water' },
+]
+
 const galleryTeaser = [
   { src: '/images/lodge-04.jpg', alt: 'Mkuyu Game Lodge reserve morning view', span: 'col-span-1 md:col-span-2' },
   { src: '/images/lodge-10.jpg', alt: 'Wildlife sighting on game drive', span: 'col-span-1' },
@@ -56,161 +62,31 @@ const galleryTeaser = [
 export default function Home() {
   return (
     <PageShell transparentNav={true}>
-      {/* 1. HERO SECTION */}
-      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
-        {/* Full-bleed background image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/lodge-03.jpg"
-            alt="Mkuyu Game Lodge landscape and savanna"
-            fill
-            priority
-            quality={90}
-            sizes="100vw"
-            className="object-cover scale-105 animate-pulse-slow"
-          />
-          {/* High-contrast gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#14240E]/80 via-[#14240E]/40 to-[#14240E]/90" />
-        </div>
+      {/* 1. HERO SLIDER (Full-screen, left-aligned, single button, no badge) */}
+      <HeroSlider />
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-28 pb-20">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white text-forest-green text-xs font-extrabold tracking-widest uppercase mb-8 shadow-xl">
-            <FiMapPin size={15} className="text-forest-green" />
-            <span>Salima District, Central Malawi</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
-            Where the Malawian bush speaks in tranquility
-          </h1>
-
-          <p className="text-white text-base sm:text-xl max-w-2xl mx-auto font-normal leading-relaxed mb-10 drop-shadow-sm">
-            An exclusive 100% off-grid sanctuary set within 330 hectares of protected wilderness. Guided safari drives, watchtower views, and sustainable boutique luxury.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/accommodation"
-              className="w-full sm:w-auto px-9 py-4 bg-forest-green hover:bg-[#4A602B] text-white font-bold rounded-full text-sm tracking-wide transition-all shadow-xl shadow-forest-green/40 hover:scale-105 flex items-center justify-center gap-2"
-            >
-              <span>Explore Sanctuaries</span>
-              <FiArrowRight size={16} />
-            </Link>
-            <Link
-              href="/activities"
-              className="w-full sm:w-auto px-9 py-4 bg-white hover:bg-forest-mint text-[#14240E] font-bold rounded-full text-sm tracking-wide transition-all shadow-xl hover:scale-105 flex items-center justify-center gap-2"
-            >
-              <span>Safari Activities</span>
-            </Link>
-            <Link
-              href="/contact?type=day-visit"
-              className="w-full sm:w-auto px-9 py-4 bg-white/15 hover:bg-white/25 text-white border border-white/40 font-bold rounded-full text-sm tracking-wide transition-all backdrop-blur-md flex items-center justify-center gap-2"
-            >
-              <span>Day Visits</span>
-            </Link>
-          </div>
-
-          {/* Quick Key Highlights */}
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-semibold text-white uppercase tracking-wider">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-light-sage" />
-              90 Mins from Lilongwe
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-light-sage" />
-              25 Mins from Lake Malawi
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-light-sage" />
-              100% Off-Grid Solar
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. FLOATING QUICK INQUIRY BAR */}
-      <section className="relative z-30 -mt-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-4 sm:p-6 shadow-2xl shadow-[#14240E]/20 border border-forest-green/20">
-          <form
-            action="/contact"
-            method="GET"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center"
-          >
-            <div className="p-3 bg-forest-light rounded-2xl border border-forest-green/10">
-              <label className="block text-[10px] font-extrabold uppercase tracking-widest text-forest-green mb-1 flex items-center gap-1.5">
-                <FiCompass size={13} />
-                <span>Experience Type</span>
-              </label>
-              <select
-                name="type"
-                className="w-full bg-transparent text-[#14240E] font-bold text-sm focus:outline-none cursor-pointer"
-              >
-                <option>Boutique Stay</option>
-                <option>Safari Game Drive</option>
-                <option>Day Visitor Pass</option>
-                <option>Bush Dining & Boma</option>
-                <option>Campsite Booking</option>
-              </select>
-            </div>
-
-            <div className="p-3 bg-forest-light rounded-2xl border border-forest-green/10">
-              <label className="block text-[10px] font-extrabold uppercase tracking-widest text-forest-green mb-1 flex items-center gap-1.5">
-                <FiUsers size={13} />
-                <span>Guests</span>
-              </label>
-              <select
-                name="guests"
-                className="w-full bg-transparent text-[#14240E] font-bold text-sm focus:outline-none cursor-pointer"
-              >
-                <option>2 Guests (Couple)</option>
-                <option>1 Guest (Solo)</option>
-                <option>3 - 4 Guests (Family)</option>
-                <option>5 - 8 Guests (Group)</option>
-                <option>9+ Guests (Exclusive)</option>
-              </select>
-            </div>
-
-            <div className="p-3 bg-forest-light rounded-2xl border border-forest-green/10">
-              <label className="block text-[10px] font-extrabold uppercase tracking-widest text-forest-green mb-1 flex items-center gap-1.5">
-                <FiCalendar size={13} />
-                <span>Preferred Date</span>
-              </label>
-              <input
-                type="date"
-                name="date"
-                className="w-full bg-transparent text-[#14240E] font-bold text-sm focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full py-4 px-6 bg-forest-green hover:bg-[#4A602B] text-white text-xs font-extrabold uppercase tracking-widest rounded-2xl transition-all shadow-lg shadow-forest-green/30 hover:scale-[1.02] flex items-center justify-center gap-2"
-              >
-                <span>Check Availability</span>
-                <FiArrowRight size={16} />
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      {/* 3. STATS STRIP */}
-      <section className="bg-forest-green text-white py-14 mt-12 relative z-20 shadow-md">
+      {/* 2. RECOLORED & EDITED STATS SECTION */}
+      <section className="bg-white py-16 border-b border-forest-green/10 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
-            {STATS.map((stat, idx) => (
-              <div key={idx} className={`pt-4 md:pt-0 ${idx > 0 ? 'md:pl-6' : ''}`}>
-                <div className="flex items-baseline justify-center gap-1.5">
-                  <span className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {statDetails.map((stat, idx) => (
+              <div
+                key={idx}
+                className="p-7 rounded-3xl bg-forest-light border border-forest-green/15 hover:border-forest-green/40 hover:shadow-lg transition-all group"
+              >
+                <div className="flex items-baseline gap-1.5 mb-2">
+                  <span className="text-4xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight group-hover:text-forest-green transition-colors">
                     {stat.value}
                   </span>
-                  <span className="text-xs uppercase font-extrabold text-light-sage tracking-wider">
+                  <span className="text-xs uppercase font-extrabold text-forest-green tracking-wider">
                     {stat.unit}
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-white font-bold mt-1.5 uppercase tracking-wider">
+                <p className="text-xs font-extrabold text-[#14240E] uppercase tracking-wider mb-1">
                   {stat.label}
+                </p>
+                <p className="text-[11px] text-[#14240E]/80 leading-relaxed font-normal">
+                  {stat.desc}
                 </p>
               </div>
             ))}
@@ -218,24 +94,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. THE RESERVE STORY */}
+      {/* 3. THE RESERVE STORY */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-forest-light text-forest-green text-xs font-extrabold tracking-widest uppercase border border-forest-green/20">
-                <span>The Wildlife Sanctuary</span>
-              </div>
+              <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-2">
+                The Wildlife Sanctuary
+              </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] leading-tight tracking-tight">
                 An intimate wildlife sanctuary in Central Malawi
               </h2>
               <div className="space-y-4 text-[#14240E] text-base sm:text-lg leading-relaxed font-normal">
                 <p>
-                  Set across 330 hectares of pristine savanna, marula groves, and acacia woodlands, Mkuyu Game Lodge delivers an authentic safari escape that directly balances conservation with boutique eco-luxury.
+                  Set across 332.15 hectares of pristine savanna, marula groves, and acacia woodlands, Mkuyu Game Lodge delivers an authentic safari escape that directly balances conservation with boutique eco-luxury.
                 </p>
                 <p>
-                  Home to over 145 resident animals including plains zebras, nyalas, waterbucks, impalas, wildebeests, and ostriches, the reserve offers guests an uncrowded encounter with the African wild.
+                  Home to 145 resident animals including 27 plains zebras, 27 waterbucks, 21 nyalas, and 10 ostriches, the reserve offers guests an uncrowded encounter with the African wild guided by certified FGASA rangers.
                 </p>
                 <p>
                   With only five en-suite sanctuaries accommodating a maximum of 12 guests, your stay is peaceful, private, and 100% off-grid powered by clean solar energy.
@@ -286,29 +162,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. ALL SERVICES & EXPERIENCES */}
+      {/* 4. REFINED SERVICES & EXPERIENCES (PUNCHY, CONCISE CARDS) */}
       <section className="py-24 bg-forest-light border-y border-forest-green/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white text-forest-green text-xs font-extrabold tracking-widest uppercase mb-3 shadow-sm border border-forest-green/20">
-              <span>All Lodge Services</span>
-            </div>
+            <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-3">
+              All Lodge Services & Activities
+            </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight">
               Ways to experience Mkuyu
             </h2>
-            <p className="text-[#14240E] text-base sm:text-lg mt-3 leading-relaxed">
-              Every adventure is designed to immerse you in nature — from guided dawn tracking to sunset cocktails at our elevated watchtower.
+            <p className="text-[#14240E] text-base mt-2 leading-relaxed">
+              Tailored safari activities, eco-sanctuaries, and bush hospitality in Salima District.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {SERVICES.map((service) => (
               <div
                 key={service.id}
-                className="group rounded-3xl bg-white border border-forest-green/15 overflow-hidden flex flex-col justify-between hover:shadow-xl hover:shadow-forest-green/10 hover:-translate-y-1.5 transition-all duration-300"
+                className="group rounded-3xl bg-white border border-forest-green/15 overflow-hidden flex flex-col justify-between hover:shadow-xl hover:shadow-forest-green/10 hover:-translate-y-1 transition-all duration-300"
               >
                 <div>
-                  <div className="relative h-52 w-full overflow-hidden">
+                  <div className="relative h-44 w-full overflow-hidden">
                     <Image
                       src={serviceImages[service.id] || '/images/lodge-40.jpg'}
                       alt={service.title}
@@ -316,30 +192,30 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-white shadow-md flex items-center justify-center">
+                    <div className="absolute top-3 left-3 w-10 h-10 rounded-2xl bg-white shadow-md flex items-center justify-center">
                       {serviceIcons[service.id]}
                     </div>
                   </div>
-                  <div className="p-7">
-                    <p className="text-[11px] font-extrabold text-forest-green uppercase tracking-wider mb-1.5">
+                  <div className="p-6">
+                    <p className="text-[10px] font-extrabold text-forest-green uppercase tracking-wider mb-1">
                       {service.subtitle}
                     </p>
-                    <h3 className="text-xl font-extrabold text-[#14240E] mb-3">
+                    <h3 className="text-lg font-extrabold text-[#14240E] mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-xs text-[#14240E]/85 leading-relaxed">
+                    <p className="text-xs text-[#14240E]/85 leading-relaxed font-normal">
                       {service.description}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0">
+                <div className="p-6 pt-0">
                   <Link
-                    href={`/activities#${service.id}`}
-                    className="inline-flex items-center gap-2 text-xs font-extrabold text-forest-green hover:text-[#4A602B] uppercase tracking-wider"
+                    href={service.id === 'accommodation' ? '/accommodation' : service.id === 'dining' ? '/accommodation#dining' : `/activities#${service.id}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-extrabold text-forest-green hover:text-[#4A602B] uppercase tracking-wider"
                   >
                     <span>Full Details</span>
-                    <FiArrowRight size={14} />
+                    <FiArrowRight size={13} />
                   </Link>
                 </div>
               </div>
@@ -348,15 +224,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. ACCOMMODATION SPOTLIGHT (DEEP LUXURY FOREST) */}
+      {/* 5. ACCOMMODATION SPOTLIGHT (DEEP LUXURY FOREST) */}
       <section className="py-24 bg-[#14240E] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-light-sage text-xs font-extrabold tracking-widest uppercase border border-white/20">
-                <span>Handcrafted Lodging</span>
-              </div>
+              <span className="inline-block text-light-sage text-xs font-extrabold tracking-widest uppercase border-b-2 border-light-sage pb-1">
+                Handcrafted Lodging
+              </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
                 Designed to tread lightly, crafted for luxury
               </h2>
@@ -400,8 +276,8 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative h-64 sm:h-80 rounded-3xl overflow-hidden shadow-xl border-2 border-white/10">
                   <Image
-                    src="/images/lodge-14.jpg"
-                    alt="Sanctuary exterior"
+                    src="/images/room-twin-family.jpg"
+                    alt="Garden Sanctuary twin bedroom with handcrafted timber beds"
                     fill
                     sizes="(max-width: 1024px) 50vw, 30vw"
                     className="object-cover"
@@ -409,8 +285,8 @@ export default function Home() {
                 </div>
                 <div className="relative h-64 sm:h-80 rounded-3xl overflow-hidden shadow-xl border-2 border-white/10 mt-8">
                   <Image
-                    src="/images/lodge-16.jpg"
-                    alt="Garden sanctuary veranda"
+                    src="/images/room-double-king.jpg"
+                    alt="Family Sanctuary king bed with woven artisan wall decor"
                     fill
                     sizes="(max-width: 1024px) 50vw, 30vw"
                     className="object-cover"
@@ -418,8 +294,8 @@ export default function Home() {
                 </div>
                 <div className="relative h-64 sm:h-80 rounded-3xl overflow-hidden shadow-xl border-2 border-white/10">
                   <Image
-                    src="/images/lodge-32.jpg"
-                    alt="Spacious suite interior"
+                    src="/images/lodge-14.jpg"
+                    alt="Eco sanctuary exterior nestled in indigenous bush"
                     fill
                     sizes="(max-width: 1024px) 50vw, 30vw"
                     className="object-cover"
@@ -428,7 +304,7 @@ export default function Home() {
                 <div className="relative h-64 sm:h-80 rounded-3xl overflow-hidden shadow-xl border-2 border-white/10 mt-8">
                   <Image
                     src="/images/lodge-35.jpg"
-                    alt="Executive sanctuary view"
+                    alt="Executive sanctuary private sun deck"
                     fill
                     sizes="(max-width: 1024px) 50vw, 30vw"
                     className="object-cover"
@@ -441,66 +317,105 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. DAY VISITOR CALLOUT BANNER */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-forest-green text-white rounded-3xl p-8 sm:p-14 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white text-forest-green text-xs font-extrabold tracking-widest uppercase">
-                <FiClock size={16} />
-                <span>Open 7 Days • 08:30 – 18:30</span>
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-                Day trips & safari getaways from Lilongwe & Senga Bay
-              </h2>
-              <p className="text-white text-base sm:text-lg leading-relaxed">
-                Enjoy Mkuyu without staying overnight. We welcome day guests for scheduled morning and afternoon game drives, pool relaxation, restaurant lunches, and sunset drinks on the watchtower.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm text-white font-bold">
-                <div className="flex items-center gap-2">
+      {/* 6. DEDICATED FULL-SECTION: DAY TRIPS & SAFARI GETAWAYS */}
+      <section className="relative py-24 bg-forest-green text-white overflow-hidden">
+        {/* Background photo with subtle gradient */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/lodge-37.jpg"
+            alt="Watchtower view at Mkuyu Game Lodge"
+            fill
+            sizes="100vw"
+            quality={85}
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/45" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-forest-green text-xs font-extrabold tracking-widest uppercase shadow-md">
+              <FiClock size={15} />
+              <span>Open 7 Days • 08:30 – 18:30</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+              Day trips & safari getaways from Lilongwe & Senga Bay
+            </h2>
+
+            <p className="text-white/95 text-base sm:text-lg leading-relaxed font-normal">
+              Enjoy Mkuyu without staying overnight. We welcome day guests for scheduled morning and afternoon game drives, pool relaxation, restaurant lunches, and sunset drinks on the watchtower.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
+                <div className="flex items-center gap-2 text-white font-bold text-sm">
                   <FiCheck className="text-light-sage flex-shrink-0" size={18} />
                   <span>Scheduled 4x4 Game Drives</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <p className="text-xs text-white/80 pl-6">
+                  Morning Buck Pursuit & golden-hour Dusk Expedition with trackers.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
+                <div className="flex items-center gap-2 text-white font-bold text-sm">
                   <FiCheck className="text-light-sage flex-shrink-0" size={18} />
-                  <span>Swimming Pool & Lounger Access</span>
+                  <span>Swimming Pool & Loungers</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <p className="text-xs text-white/80 pl-6">
+                  Relaxing poolside escape surrounded by indigenous trees.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
+                <div className="flex items-center gap-2 text-white font-bold text-sm">
                   <FiCheck className="text-light-sage flex-shrink-0" size={18} />
-                  <span>Restaurant & Safari Bar Dining</span>
+                  <span>Restaurant & Safari Bar</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <p className="text-xs text-white/80 pl-6">
+                  Fresh farm-to-table lunch, cold local drinks, and refreshments.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 space-y-1">
+                <div className="flex items-center gap-2 text-white font-bold text-sm">
                   <FiCheck className="text-light-sage flex-shrink-0" size={18} />
-                  <span>The 360° Panoramic Watchtower</span>
+                  <span>360° Panoramic Watchtower</span>
                 </div>
+                <p className="text-xs text-white/80 pl-6">
+                  Climb above the canopy for unrivaled sunset and savanna vistas.
+                </p>
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col items-center lg:items-end justify-center gap-4">
+            <div className="pt-6 flex flex-col sm:flex-row items-center gap-4">
               <Link
                 href="/contact?type=day-visit"
-                className="w-full sm:w-auto px-9 py-4 bg-white text-forest-green hover:bg-forest-mint font-extrabold rounded-full text-xs uppercase tracking-widest text-center transition-all shadow-xl hover:scale-105"
+                className="w-full sm:w-auto px-9 py-4 bg-white text-forest-green hover:bg-forest-mint font-extrabold rounded-full text-xs uppercase tracking-widest text-center transition-all shadow-xl hover:scale-105 inline-flex items-center justify-center gap-2"
               >
-                Book Day Visit
+                <span>Book a Day Visit</span>
+                <FiArrowRight size={15} />
               </Link>
               <a
                 href={`tel:${LODGE_FACTS.phone}`}
-                className="text-xs text-white/90 hover:text-white font-bold transition-colors text-center"
+                className="w-full sm:w-auto px-7 py-4 border border-white/40 hover:bg-white/10 text-white font-bold rounded-full text-xs uppercase tracking-wider text-center transition-all inline-flex items-center justify-center gap-2"
               >
-                Or call: {LODGE_FACTS.phone}
+                <FiPhone size={14} />
+                <span>Call {LODGE_FACTS.phone}</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 8. SUSTAINABILITY & CONSERVATION CRITERIA */}
+      {/* 7. SUSTAINABILITY & CONSERVATION CRITERIA */}
       <section className="py-24 bg-forest-light border-y border-forest-green/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white text-forest-green text-xs font-extrabold tracking-widest uppercase mb-3 shadow-sm border border-forest-green/20">
-              <span>Eco-Conscious Tourism</span>
-            </div>
+              <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-3">
+                Eco-Conscious Tourism
+              </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight">
               Living in harmony with the Malawian ecosystem
             </h2>
@@ -530,14 +445,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. VISUAL GALLERY SHOWCASE */}
+      {/* 8. VISUAL GALLERY SHOWCASE */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-forest-light text-forest-green text-xs font-extrabold tracking-widest uppercase mb-2 border border-forest-green/20">
-                <span>Visual Stories</span>
-              </div>
+              <span className="inline-block text-forest-green text-xs font-extrabold tracking-widest uppercase border-b-2 border-forest-green pb-1 mb-2">
+                Visual Stories
+              </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight">
                 Moments captured at Mkuyu
               </h2>
@@ -570,34 +485,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. BOTTOM BOOKING CTA */}
-      <section className="py-24 bg-[#14240E] text-white text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-light-sage text-xs font-extrabold tracking-widest uppercase mb-4 border border-white/20">
-            <span>Plan Your Malawian Safari</span>
-          </div>
-          <h2 className="text-3xl sm:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-            Come and immerse yourself in the stillness of the bush
-          </h2>
-          <p className="text-white text-base sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-            Whether for a weekend getaway, family holiday, or day safari from Lake Malawi, we look forward to welcoming you to Mkuyu Game Lodge.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto px-10 py-4 bg-forest-green hover:bg-[#4A602B] text-white font-extrabold rounded-full text-xs uppercase tracking-widest transition-all shadow-xl shadow-forest-green/40 hover:scale-105"
-            >
-              Reserve a Sanctuary
-            </Link>
-            <Link
-              href="/activities"
-              className="w-full sm:w-auto px-10 py-4 bg-white text-[#14240E] hover:bg-forest-mint font-extrabold rounded-full text-xs uppercase tracking-widest transition-all shadow-xl hover:scale-105"
-            >
-              View Safari Itineraries
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* 9. REFINED REUSABLE BOTTOM CTA (Reduced height, image behind, no badge) */}
+      <CtaSection />
     </PageShell>
   )
 }

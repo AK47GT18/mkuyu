@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-import { FiPhone, FiMail, FiMapPin, FiClock, FiCheck, FiSend } from 'react-icons/fi'
+import { FiPhone, FiMapPin, FiClock, FiCheck, FiSend } from 'react-icons/fi'
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import PageShell from '@/app/components/layout/PageShell'
 import PageHero from '@/app/components/ui/PageHero'
@@ -26,7 +27,7 @@ export default function ContactPage() {
   }
 
   return (
-    <PageShell transparentNav={false}>
+    <PageShell transparentNav={true}>
       <PageHero
         title="Contact & Reservations"
         subtitle="Plan your getaway, reserve an eco-sanctuary, or inquire about safari day visits"
@@ -93,23 +94,25 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Email */}
+                  {/* WhatsApp Chat */}
                   <div className="flex items-start gap-4">
                     <div className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center text-light-sage flex-shrink-0 mt-0.5">
-                      <FiMail size={20} />
+                      <FaWhatsapp size={20} />
                     </div>
                     <div>
                       <p className="text-[11px] font-extrabold text-light-sage uppercase tracking-wider">
-                        Email Inquiries
+                        WhatsApp Chat
                       </p>
                       <a
-                        href={`mailto:${LODGE_FACTS.email}`}
+                        href={`https://wa.me/${LODGE_FACTS.phone.replace(/[^0-9]/g, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-white hover:text-light-sage text-sm font-bold mt-0.5 block transition-colors"
                       >
-                        {LODGE_FACTS.email}
+                        Message us on WhatsApp
                       </a>
                       <p className="text-white/80 text-xs mt-0.5">
-                        Replies usually within 24 hours
+                        Quick replies for bookings &amp; inquiries
                       </p>
                     </div>
                   </div>
@@ -333,6 +336,30 @@ export default function ContactPage() {
             <h3 className="text-3xl sm:text-5xl font-extrabold text-[#14240E] tracking-tight">
               How to reach Mkuyu Game Lodge
             </h3>
+          </div>
+
+          {/* Arrival Landmark Gate */}
+          <div className="mb-12 relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+            <Image
+              src="/images/lodge-entrance.jpg"
+              alt="Mkuyu Game Lodge Main Entrance Gate on T358 Salima"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6 sm:p-10">
+              <div>
+                <span className="inline-block px-3 py-1 rounded-full bg-forest-green text-white text-[11px] font-extrabold uppercase tracking-widest mb-2 shadow-xs">
+                  Arrival Landmark
+                </span>
+                <p className="text-white text-xl sm:text-3xl font-extrabold tracking-tight">
+                  Welcome to Mkuyu: Look for our iconic green roof gate on the T358
+                </p>
+                <p className="text-white/80 text-xs sm:text-sm mt-1">
+                  Our gate attendants will verify your booking confirmation or welcome day visitors.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
