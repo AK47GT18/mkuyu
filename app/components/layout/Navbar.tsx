@@ -40,23 +40,25 @@ export default function Navbar({ transparent = true }: NavbarProps) {
 
   // If transparent prop is false, always behave as "scrolled" (solid white)
   const isSolid = !transparent || scrolled
+  // Top nav bar activates (solid white) when scrolled, non-transparent, or when mobile menu is opened
+  const isHeaderActive = isSolid || mobileOpen
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isSolid ? 'bg-white shadow-md border-b border-green-950/5' : 'bg-transparent'
+          isHeaderActive ? 'bg-white shadow-md border-b border-green-950/5' : 'bg-transparent'
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
-              src={isSolid ? '/logos/logo-horizontal.png' : '/logos/logo-horizontal-white.png'}
+              src={isHeaderActive ? '/logos/logo-horizontal.png' : '/logos/logo-horizontal-white.png'}
               alt="Mkuyu Game Lodge"
               height={56}
               width={240}
-              className="h-11 md:h-12 w-auto object-contain transition-all"
+              className="h-9 sm:h-11 md:h-12 w-auto max-w-[170px] sm:max-w-none object-contain transition-all"
               priority
             />
           </Link>
@@ -70,7 +72,7 @@ export default function Navbar({ transparent = true }: NavbarProps) {
                   <Link
                     href={link.href}
                     className={`group relative py-1 text-xs font-bold tracking-wider uppercase transition-colors inline-flex flex-col ${
-                      isSolid
+                      isHeaderActive
                         ? active
                           ? 'text-forest-green font-extrabold'
                           : 'text-[#14240E] hover:text-forest-green'
@@ -83,8 +85,8 @@ export default function Navbar({ transparent = true }: NavbarProps) {
                     <span
                       className={`h-[2px] w-full mt-0.5 rounded-full transition-all duration-200 ${
                         active
-                          ? isSolid ? 'bg-forest-green opacity-100' : 'bg-white opacity-100'
-                          : isSolid
+                          ? isHeaderActive ? 'bg-forest-green opacity-100' : 'bg-white opacity-100'
+                          : isHeaderActive
                           ? 'bg-forest-green opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 origin-left'
                           : 'bg-white opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 origin-left'
                       }`}
@@ -107,7 +109,7 @@ export default function Navbar({ transparent = true }: NavbarProps) {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden p-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center ${
-                isSolid
+                isHeaderActive
                   ? 'bg-forest-green text-white hover:bg-[#4A602B]'
                   : 'bg-white/20 text-white backdrop-blur-md border border-white/25 hover:bg-white/30'
               }`}
@@ -117,21 +119,11 @@ export default function Navbar({ transparent = true }: NavbarProps) {
             </button>
           </div>
         </nav>
-      </header>
 
-      {/* Mobile Menu Dropdown (White floating card anchored below the top navbar, not full screen) */}
-      {mobileOpen && (
-        <>
-          {/* Subtle backdrop overlay (tapping outside dismisses the menu) */}
-          <div
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs lg:hidden transition-opacity"
-            onClick={() => setMobileOpen(false)}
-            aria-hidden="true"
-          />
-
-          {/* Floating White Dropdown Menu */}
-          <div className="fixed top-20 left-4 right-4 sm:left-6 sm:right-6 z-50 lg:hidden bg-white rounded-2xl shadow-2xl border border-stone-200/90 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-            <nav className="p-3 sm:p-5 flex flex-col gap-1">
+        {/* Mobile Dropdown Menu — directly attached under the active top nav bar (one unified piece, no shade) */}
+        {mobileOpen && (
+          <div className="lg:hidden bg-white border-t border-stone-100 shadow-xl px-4 pt-2 pb-5 max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <nav className="flex flex-col gap-1 max-w-md mx-auto">
               {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
                 const active = isActive(link.href)
                 return (
@@ -162,7 +154,16 @@ export default function Navbar({ transparent = true }: NavbarProps) {
               </div>
             </nav>
           </div>
-        </>
+        )}
+      </header>
+
+      {/* Invisible backdrop click-listener to close when tapping outside — NO SHADE, completely transparent */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-transparent lg:hidden"
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
       )}
     </>
   )
