@@ -50,7 +50,7 @@ export default function Navbar({ transparent = true }: NavbarProps) {
           isHeaderActive ? 'bg-white shadow-md border-b border-green-950/5' : 'bg-transparent'
         }`}
       >
-        <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+        <nav className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink min-w-0 flex items-center">
             <Image
@@ -98,7 +98,7 @@ export default function Navbar({ transparent = true }: NavbarProps) {
           </ul>
 
           {/* CTA (Contact Us) + hamburger */}
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0 mr-1 sm:mr-0">
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider rounded-full bg-forest-green hover:bg-[#4A602B] text-white shadow-md shadow-green-950/20 transition-all hover:scale-105"
@@ -108,19 +108,22 @@ export default function Navbar({ transparent = true }: NavbarProps) {
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden flex-shrink-0 p-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center ${
+              className={`lg:hidden flex-shrink-0 p-2 rounded-lg transition-colors flex items-center justify-center bg-transparent ${
                 isHeaderActive
-                  ? 'bg-forest-green text-white hover:bg-[#4A602B]'
-                  : 'bg-white text-forest-green hover:bg-stone-100'
+                  ? 'text-[#14240E] hover:text-forest-green hover:bg-forest-light'
+                  : 'text-white hover:text-white/80 hover:bg-white/10'
               }`}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileOpen ? (
-                <RxCross2 size={24} className="text-white" />
+                <RxCross2
+                  size={28}
+                  className={isHeaderActive ? 'text-[#14240E]' : 'text-white'}
+                />
               ) : (
                 <RxHamburgerMenu
-                  size={24}
-                  className={isHeaderActive ? 'text-white' : 'text-forest-green'}
+                  size={28}
+                  className={isHeaderActive ? 'text-[#14240E]' : 'text-white'}
                 />
               )}
             </button>
@@ -129,7 +132,7 @@ export default function Navbar({ transparent = true }: NavbarProps) {
 
         {/* Mobile Dropdown Menu — directly attached under the active top nav bar (one unified piece, no shade) */}
         {mobileOpen && (
-          <div className="lg:hidden w-full bg-white border-t border-stone-100 shadow-xl px-4 pt-2 pb-5 max-h-[calc(100vh-5rem)] overflow-y-auto">
+          <div className="lg:hidden w-full bg-white border-t border-stone-100 shadow-xl px-6 pt-2 pb-5 max-h-[calc(100vh-5rem)] overflow-y-auto">
             <nav className="flex flex-col gap-1 w-full max-w-md mx-auto">
               {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
                 const active = isActive(link.href)
