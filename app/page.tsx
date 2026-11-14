@@ -68,9 +68,9 @@ export default function Home() {
       <HeroSlider />
 
       {/* 2. UNIFIED STAT BAR (Clean 2x2 grid on mobile, continuous 4-part line on desktop) */}
-      <section className="bg-forest-light/60 py-6 sm:py-9 border-b border-forest-green/15 relative z-20">
+      <section className="bg-forest-light/60 py-4 sm:py-7 border-b border-forest-green/15 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 md:gap-y-0 md:divide-x divide-forest-green/20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-4 md:gap-y-0 md:divide-x divide-forest-green/20">
             {statDetails.map((stat, idx) => (
               <div
                 key={idx}
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* 3. THE RESERVE STORY */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
