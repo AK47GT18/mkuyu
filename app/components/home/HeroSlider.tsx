@@ -43,7 +43,7 @@ export default function HeroSlider() {
   }, [])
 
   return (
-    <section className="relative sm:min-h-screen sm:h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[85vh] sm:min-h-screen sm:h-screen flex items-center overflow-hidden">
       {/* Background Slides with crossfade */}
       {heroSlides.map((slide, index) => (
         <div
@@ -70,49 +70,49 @@ export default function HeroSlider() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/85 via-transparent to-black/40" />
       <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.14),_transparent_60%)]" />
 
-      {/* Hero Content — Tight, Seamless & Perfectly Sized (No Dead Space, No Overflow) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 sm:pt-36 lg:pt-44 pb-8 sm:pb-12">
-        <div className="max-w-3xl text-left space-y-3.5 sm:space-y-5 mt-1 sm:mt-4">
+      {/* Hero Content — Cinematic, Balanced & Roomy (Neither Too Tall Nor Too Short) */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 sm:pt-40 lg:pt-48 pb-14 sm:pb-16">
+        <div className="max-w-3xl text-left space-y-4 sm:space-y-6 mt-2 sm:mt-6">
           {/* Main Headline */}
-          <h1 className="text-2xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.15] sm:leading-[1.08] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.12] sm:leading-[1.08] tracking-tight">
             Where the Malawian bush speaks in tranquility
           </h1>
 
           {/* Descriptive Subtitle */}
-          <p className="text-xs sm:text-lg text-white/90 leading-relaxed font-normal max-w-2xl">
+          <p className="text-sm sm:text-lg text-white/90 leading-relaxed font-normal max-w-2xl">
             An intimate 332.15-hectare wildlife sanctuary. Experience 100% solar off-grid sanctuaries, guided open 4x4 safari drives, resident zebras, and panoramic watchtower sunsets.
           </p>
 
-          {/* Dual Action Buttons (No Horizontal Overflow on Small Screens) */}
-          <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3.5 w-full max-w-xs sm:max-w-none">
+          {/* Dual Action Buttons (Contained, Comfortable & Never Overflowing) */}
+          <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-3.5 bg-forest-green hover:bg-[#4A602B] text-white text-xs font-extrabold uppercase tracking-widest rounded-full transition-all shadow-xl hover:scale-105 active:scale-95 text-center"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 bg-forest-green hover:bg-[#4A602B] text-white text-xs font-extrabold uppercase tracking-widest rounded-full transition-all shadow-xl hover:scale-105 active:scale-95 text-center"
             >
               <span>Plan Your Safari</span>
-              <FiArrowRight size={14} />
+              <FiArrowRight size={15} />
             </Link>
             <Link
               href="/activities"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 bg-white/15 hover:bg-white/25 text-white text-xs font-extrabold uppercase tracking-widest rounded-full transition-all backdrop-blur-md border border-white/25 hover:border-white/40 text-center"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-7 sm:py-4 bg-white/15 hover:bg-white/25 text-white text-xs font-extrabold uppercase tracking-widest rounded-full transition-all backdrop-blur-md border border-white/25 hover:border-white/40 text-center"
             >
-              <FiCompass size={14} />
+              <FiCompass size={15} />
               <span>Explore Activities</span>
             </Link>
           </div>
 
           {/* Quick Reserve Perks Tags */}
-          <div className="pt-1.5 sm:pt-3 flex flex-wrap items-center gap-1.5 sm:gap-6 text-[10px] sm:text-xs text-white/85 font-medium">
-            <span className="inline-flex items-center gap-1.5 bg-black/40 sm:bg-transparent backdrop-blur-xs px-2.5 py-1 sm:p-0 rounded-full border border-white/15 sm:border-0">
-              <FiShield size={12} className="text-light-sage" />
+          <div className="pt-3 sm:pt-4 flex flex-wrap items-center gap-2 sm:gap-6 text-[11px] sm:text-xs text-white/90 font-medium">
+            <span className="inline-flex items-center gap-1.5 bg-black/40 sm:bg-transparent backdrop-blur-xs px-3 py-1.5 sm:p-0 rounded-full border border-white/15 sm:border-0">
+              <FiShield size={13} className="text-light-sage" />
               <span>332.15 ha Protected Reserve</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-black/40 sm:bg-transparent backdrop-blur-xs px-2.5 py-1 sm:p-0 rounded-full border border-white/15 sm:border-0">
-              <FiSun size={12} className="text-light-sage" />
+            <span className="inline-flex items-center gap-1.5 bg-black/40 sm:bg-transparent backdrop-blur-xs px-3 py-1.5 sm:p-0 rounded-full border border-white/15 sm:border-0">
+              <FiSun size={13} className="text-light-sage" />
               <span>100% Off-Grid Solar Energy</span>
             </span>
             <span className="hidden sm:inline-block text-white/40">•</span>
-            <span className="inline-flex items-center bg-forest-green/70 sm:bg-transparent px-2.5 py-1 sm:p-0 rounded-full text-light-sage font-bold border border-forest-green/40 sm:border-0">
+            <span className="inline-flex items-center bg-forest-green/80 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-full text-light-sage font-bold border border-forest-green/40 sm:border-0">
               Open Daily 08:30 – 18:30
             </span>
           </div>
@@ -120,7 +120,7 @@ export default function HeroSlider() {
         </div>
 
         {/* Slide indicators in the bottom right */}
-        <div className="absolute bottom-3 sm:bottom-6 right-4 sm:right-12 z-20 flex items-center gap-1.5 sm:gap-2">
+        <div className="absolute bottom-6 sm:bottom-10 right-4 sm:right-12 z-20 flex items-center gap-2">
           {heroSlides.map((_, i) => (
             <button
               key={i}
