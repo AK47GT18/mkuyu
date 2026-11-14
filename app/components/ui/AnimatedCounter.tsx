@@ -8,6 +8,7 @@ interface AnimatedCounterProps {
   suffix?: string
   prefix?: string
   className?: string
+  decimals?: number
 }
 
 export default function AnimatedCounter({
@@ -16,10 +17,11 @@ export default function AnimatedCounter({
   suffix = '',
   prefix = '',
   className = '',
+  decimals,
 }: AnimatedCounterProps) {
   const numericValue = typeof value === 'number' ? value : parseFloat(value.toString().replace(/[^0-9.]/g, ''))
   const isDecimal = value.toString().includes('.')
-  const decimalPlaces = isDecimal ? (value.toString().split('.')[1]?.length || 2) : 0
+  const decimalPlaces = decimals !== undefined ? decimals : (isDecimal ? (value.toString().split('.')[1]?.length || 2) : 0)
 
   const [displayValue, setDisplayValue] = useState<number>(0)
   const [hasAnimated, setHasAnimated] = useState<boolean>(false)
