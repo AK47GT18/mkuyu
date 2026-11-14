@@ -94,7 +94,7 @@ export default function HeroSlider() {
             </Link>
             <Link
               href="/activities"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-7 sm:py-4 bg-white/15 hover:bg-white/25 text-white text-xs font-extrabold uppercase tracking-widest rounded-full transition-all backdrop-blur-md border border-white/25 hover:border-white/40 text-center"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-7 sm:py-4 bg-black/40 hover:bg-black/60 text-white text-xs font-extrabold uppercase tracking-widest rounded-full transition-all border border-white/30 hover:border-white/50 text-center"
             >
               <FiCompass size={15} />
               <span>Explore Activities</span>
@@ -103,11 +103,11 @@ export default function HeroSlider() {
 
           {/* Quick Reserve Perks Tags */}
           <div className="pt-3 sm:pt-4 flex flex-wrap items-center gap-2 sm:gap-6 text-[11px] sm:text-xs text-white/90 font-medium">
-            <span className="inline-flex items-center gap-1.5 bg-black/40 sm:bg-transparent backdrop-blur-xs px-3 py-1.5 sm:p-0 rounded-full border border-white/15 sm:border-0">
+            <span className="inline-flex items-center gap-1.5 bg-black/50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-full border border-white/20 sm:border-0">
               <FiShield size={13} className="text-light-sage" />
               <span>332.15 ha Protected Reserve</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-black/40 sm:bg-transparent backdrop-blur-xs px-3 py-1.5 sm:p-0 rounded-full border border-white/15 sm:border-0">
+            <span className="inline-flex items-center gap-1.5 bg-black/50 sm:bg-transparent px-3 py-1.5 sm:p-0 rounded-full border border-white/20 sm:border-0">
               <FiSun size={13} className="text-light-sage" />
               <span>100% Off-Grid Solar Energy</span>
             </span>

@@ -46,19 +46,19 @@ export default function Navbar({ transparent = true }: NavbarProps) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
           isHeaderActive ? 'bg-white shadow-md border-b border-green-950/5' : 'bg-transparent'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+        <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center">
+          <Link href="/" className="flex-shrink min-w-0 flex items-center">
             <Image
               src={isHeaderActive ? '/logos/logo-horizontal.png' : '/logos/logo-horizontal-white.png'}
               alt="Mkuyu Game Lodge"
-              height={56}
-              width={240}
-              className="h-9 sm:h-11 md:h-12 w-auto max-w-[170px] sm:max-w-none object-contain transition-all"
+              height={44}
+              width={180}
+              className="h-8 sm:h-10 md:h-11 w-auto max-w-[140px] xs:max-w-[170px] sm:max-w-none object-contain transition-all"
               priority
             />
           </Link>
@@ -98,7 +98,7 @@ export default function Navbar({ transparent = true }: NavbarProps) {
           </ul>
 
           {/* CTA (Contact Us) + hamburger */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider rounded-full bg-forest-green hover:bg-[#4A602B] text-white shadow-md shadow-green-950/20 transition-all hover:scale-105"
@@ -108,22 +108,29 @@ export default function Navbar({ transparent = true }: NavbarProps) {
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden p-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center ${
+              className={`lg:hidden flex-shrink-0 p-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center ${
                 isHeaderActive
                   ? 'bg-forest-green text-white hover:bg-[#4A602B]'
-                  : 'bg-white/20 text-white backdrop-blur-md border border-white/25 hover:bg-white/30'
+                  : 'bg-white text-forest-green hover:bg-stone-100'
               }`}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
-              {mobileOpen ? <RxCross2 size={22} className="text-white" /> : <RxHamburgerMenu size={22} className="text-white" />}
+              {mobileOpen ? (
+                <RxCross2 size={24} className="text-white" />
+              ) : (
+                <RxHamburgerMenu
+                  size={24}
+                  className={isHeaderActive ? 'text-white' : 'text-forest-green'}
+                />
+              )}
             </button>
           </div>
         </nav>
 
         {/* Mobile Dropdown Menu — directly attached under the active top nav bar (one unified piece, no shade) */}
         {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-stone-100 shadow-xl px-4 pt-2 pb-5 max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <nav className="flex flex-col gap-1 max-w-md mx-auto">
+          <div className="lg:hidden w-full bg-white border-t border-stone-100 shadow-xl px-4 pt-2 pb-5 max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <nav className="flex flex-col gap-1 w-full max-w-md mx-auto">
               {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
                 const active = isActive(link.href)
                 return (
