@@ -23,6 +23,10 @@ export default function Navbar({ transparent = true }: NavbarProps) {
   }
 
   useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
     if (!transparent) return
 
     const handleScroll = () => {
@@ -101,71 +105,64 @@ export default function Navbar({ transparent = true }: NavbarProps) {
             </Link>
 
             <button
-              onClick={() => setMobileOpen(true)}
-              className={`lg:hidden p-2 rounded-xl transition-colors ${
-                isSolid ? 'text-[#14240E] hover:bg-forest-light' : 'text-white hover:bg-white/10'
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className={`lg:hidden p-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center ${
+                isSolid
+                  ? 'bg-forest-green text-white hover:bg-[#4A602B]'
+                  : 'bg-white/20 text-white backdrop-blur-md border border-white/25 hover:bg-white/30'
               }`}
-              aria-label="Open menu"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
-              <RxHamburgerMenu size={24} />
+              {mobileOpen ? <RxCross2 size={22} className="text-white" /> : <RxHamburgerMenu size={22} className="text-white" />}
             </button>
           </div>
         </nav>
       </header>
 
-      {/* Mobile full-screen menu */}
+      {/* Mobile Menu Dropdown (White floating card anchored below the top navbar, not full screen) */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-[100] bg-forest-deep flex flex-col text-white">
-          <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
-            <Link href="/" onClick={() => setMobileOpen(false)}>
-              <Image
-                src="/logos/logo-horizontal-white.png"
-                alt="Mkuyu Game Lodge"
-                height={48}
-                width={180}
-                style={{ height: 44, width: 'auto' }}
-              />
-            </Link>
-            <button
-              onClick={() => setMobileOpen(false)}
-              className="text-white p-2 hover:bg-white/10 rounded-full transition-colors"
-              aria-label="Close menu"
-            >
-              <RxCross2 size={26} />
-            </button>
-          </div>
+        <>
+          {/* Subtle backdrop overlay (tapping outside dismisses the menu) */}
+          <div
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs lg:hidden transition-opacity"
+            onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
+          />
 
-          <nav className="flex-1 flex flex-col justify-center px-8 gap-3">
-            {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
-              const active = isActive(link.href)
-              return (
+          {/* Floating White Dropdown Menu */}
+          <div className="fixed top-20 left-4 right-4 sm:left-6 sm:right-6 z-50 lg:hidden bg-white rounded-2xl shadow-2xl border border-stone-200/90 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+            <nav className="p-3 sm:p-5 flex flex-col gap-1">
+              {NAV_LINKS.filter((l) => l.href !== '/contact').map((link) => {
+                const active = isActive(link.href)
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold tracking-wide transition-all ${
+                      active
+                        ? 'bg-forest-light text-forest-green font-extrabold'
+                        : 'text-stone-800 hover:text-forest-green hover:bg-stone-50'
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {active && <span className="h-2 w-2 rounded-full bg-forest-green" />}
+                  </Link>
+                )
+              })}
+
+              <div className="pt-2 border-t border-stone-100 mt-2">
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className={`text-2xl sm:text-3xl font-bold tracking-tight transition-all flex items-center justify-between py-3 px-4 rounded-xl ${
-                    active
-                      ? 'text-white bg-white/15 font-extrabold border border-white/20'
-                      : 'text-white/80 hover:text-white hover:bg-white/5'
-                  }`}
+                  className="flex items-center justify-center w-full px-5 py-3.5 bg-forest-green hover:bg-[#4A602B] text-white text-xs font-extrabold uppercase tracking-wider rounded-xl shadow-md transition-colors"
                 >
-                  <span>{link.label}</span>
-                  {active && <span className="h-2.5 w-2.5 rounded-full bg-light-sage shadow-xs" />}
+                  Contact Us
                 </Link>
-              )
-            })}
-          </nav>
-
-          <div className="px-8 pb-10">
-            <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="inline-flex w-full items-center justify-center px-6 py-4 bg-forest-green text-white text-sm font-bold uppercase tracking-wider rounded-xl shadow-lg hover:bg-[#4A602B] transition-colors"
-            >
-              Contact Us
-            </Link>
+              </div>
+            </nav>
           </div>
-        </div>
+        </>
       )}
     </>
   )

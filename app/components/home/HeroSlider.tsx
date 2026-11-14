@@ -43,7 +43,7 @@ export default function HeroSlider() {
   }, [])
 
   return (
-    <section className="relative min-h-[85vh] sm:min-h-screen sm:h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[85vh] sm:min-h-screen sm:h-screen flex items-end sm:items-center overflow-hidden">
       {/* Background Slides with crossfade */}
       {heroSlides.map((slide, index) => (
         <div
@@ -70,8 +70,8 @@ export default function HeroSlider() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/85 via-transparent to-black/40" />
       <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.14),_transparent_60%)]" />
 
-      {/* Hero Content — Cinematic, Balanced & Roomy (Neither Too Tall Nor Too Short) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 sm:pt-40 lg:pt-48 pb-14 sm:pb-16">
+      {/* Hero Content — Cinematic, Balanced & Positioned Lower on Mobile */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-36 sm:pt-40 lg:pt-48 pb-8 sm:pb-16">
         <div className="max-w-3xl text-left space-y-4 sm:space-y-6 mt-2 sm:mt-6">
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.12] sm:leading-[1.08] tracking-tight">
@@ -120,7 +120,7 @@ export default function HeroSlider() {
         </div>
 
         {/* Slide indicators in the bottom right */}
-        <div className="absolute bottom-6 sm:bottom-10 right-4 sm:right-12 z-20 flex items-center gap-2">
+        <div className="absolute bottom-4 sm:bottom-10 right-4 sm:right-12 z-20 flex items-center gap-2">
           {heroSlides.map((_, i) => (
             <button
               key={i}
