@@ -46,10 +46,10 @@ const serviceImages: Record<string, string> = {
 }
 
 const statDetails = [
-  { value: '332.15', unit: 'Hectares', label: 'Protected Reserve', desc: 'Indigenous Malawian savanna & marula groves' },
-  { value: '145', unit: 'Animals', label: 'Resident Wildlife', desc: 'Plains zebras, nyalas, waterbucks & ostriches' },
-  { value: '5', unit: 'Sanctuaries', label: 'Eco Rooms', desc: 'Intimate boutique capacity for up to 12 guests' },
-  { value: '100%', unit: 'Solar', label: 'Off-Grid Energy', desc: 'Standalone solar power & solar hot water' },
+  { value: 332.15, decimals: 2, unit: 'Hectares', label: 'Protected Reserve', desc: 'Indigenous Malawian savanna & marula groves' },
+  { value: 145, unit: 'Animals', label: 'Resident Wildlife', desc: 'Plains zebras, nyalas, waterbucks & ostriches' },
+  { value: 5, unit: 'Sanctuaries', label: 'Eco Rooms', desc: 'Intimate boutique capacity for up to 12 guests' },
+  { value: 100, suffix: '%', unit: 'Solar', label: 'Off-Grid Energy', desc: 'Standalone solar power & solar hot water' },
 ]
 
 const galleryTeaser = [
@@ -67,25 +67,29 @@ export default function Home() {
       {/* 1. HERO SLIDER (Full-screen, left-aligned, single button, no badge) */}
       <HeroSlider />
 
-      {/* 2. UNIFIED SINGLE-LINE STAT BAR (NOT INDEPENDENT CARDS) */}
+      {/* 2. UNIFIED STAT BAR (Clean 2x2 grid on mobile, continuous 4-part line on desktop) */}
       <section className="bg-forest-light/60 py-6 sm:py-9 border-b border-forest-green/15 relative z-20">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-4 divide-x divide-forest-green/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 md:gap-y-0 md:divide-x divide-forest-green/20">
             {statDetails.map((stat, idx) => (
               <div
                 key={idx}
-                className="px-2 sm:px-6 lg:px-8 text-left flex flex-col justify-center"
+                className={`px-3 sm:px-6 lg:px-8 text-left flex flex-col justify-center ${
+                  idx % 2 === 1 ? 'border-l border-forest-green/20 md:border-l-0 pl-4 sm:pl-6' : ''
+                }`}
               >
                 <div className="flex items-baseline gap-1 sm:gap-1.5 mb-0.5">
                   <AnimatedCounter
                     value={stat.value}
-                    className="text-lg sm:text-3xl lg:text-5xl font-extrabold text-[#14240E] tracking-tight"
+                    decimals={stat.decimals}
+                    suffix={stat.suffix || ''}
+                    className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-[#14240E] tracking-tight"
                   />
-                  <span className="text-[8px] sm:text-[10px] lg:text-xs uppercase font-extrabold text-forest-green tracking-wider">
+                  <span className="text-[10px] sm:text-[10px] lg:text-xs uppercase font-extrabold text-forest-green tracking-wider">
                     {stat.unit}
                   </span>
                 </div>
-                <p className="text-[9px] sm:text-xs font-extrabold text-[#14240E] uppercase tracking-tight truncate">
+                <p className="text-xs sm:text-xs font-extrabold text-[#14240E] uppercase tracking-tight">
                   {stat.label}
                 </p>
                 <p className="text-[10px] lg:text-[11px] text-[#14240E]/75 leading-relaxed font-normal mt-0.5 hidden sm:block">
